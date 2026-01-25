@@ -1,0 +1,21 @@
+name = "plugins-nstudio-io"
+compatibility_date = "2024-01-01"
+
+[site]
+bucket = ".vitepress/dist"
+
+# Cloudflare Pages configuration
+# Note: Most Pages settings are configured in the Cloudflare dashboard
+# This file is primarily for local development with wrangler
+
+# Uncomment if you want to add custom headers or redirects
+# [[headers]]
+# for = "/*"
+# [headers.values]
+# X-Frame-Options = "DENY"
+# X-Content-Type-Options = "nosniff"
+
+# [[redirects]]
+# from = "/old-path"
+# to = "/new-path"
+# status = 301
