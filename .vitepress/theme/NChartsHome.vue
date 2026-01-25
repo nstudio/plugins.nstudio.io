@@ -154,7 +154,6 @@ const data: BarChartData = {
 
           <!-- Headline -->
           <h1 class="text-5xl font-bold leading-tight text-slate-900 dark:text-white md:text-7xl">
-            Beautiful Native
             <span class="block bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent">
               Charts for NativeScript
             </span>
@@ -357,7 +356,7 @@ const data: BarChartData = {
         
         <!-- Install command -->
         <div class="mx-auto mt-8 max-w-md">
-          <CodeBlock code="npm install @nstudio/ncharts" language="bash" filename="$" />
+          <CodeBlock code="npm install @nstudio/ncharts" language="bash" filename="" />
         </div>
 
         <div class="mt-8 flex flex-wrap justify-center gap-4">
