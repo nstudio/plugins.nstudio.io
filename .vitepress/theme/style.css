@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --vp-c-brand-1: #F75930;
+  --vp-c-brand-2: #ff6b45;
+  --vp-c-brand-3: #ff7d5c;
+  --vp-c-brand-soft: rgba(247, 89, 48, 0.14);
+  
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #F75930 30%, #3B82F6);
+  
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #F75930 50%, #3B82F6 50%);
+  --vp-home-hero-image-filter: blur(56px);
+}
+
+.dark {
+  --vp-c-brand-1: #ff6b45;
+  --vp-c-brand-2: #ff7d5c;
+  --vp-c-brand-3: #ff8f73;
+}
+
+/* Logo styling */
+.VPNavBarTitle .logo {
+  border-radius: 0.8rem;
+}
+
+/* Hide default VitePress content for custom home page */
+.vp-doc.container {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+/* Code block styling */
+[class*='language-'] {
+  @apply relative my-6;
+}
+
+[class*='language-'] pre {
+  @apply my-0;
+}
+
+[class*='language-'] .lang {
+  @apply absolute right-0 top-0 px-4 pt-2 font-mono text-xs text-gray-500;
+}
+
+/* Custom block styling */
+.custom-block {
+  @apply my-4 overflow-x-auto rounded-lg p-4;
+}
+
+.custom-block.tip {
+  @apply border border-emerald-400 bg-emerald-50 dark:bg-emerald-950/30;
+}
+
+.custom-block.warning {
+  @apply border border-amber-400 bg-amber-50 dark:bg-amber-950/30;
+}
+
+.custom-block.danger {
+  @apply border border-red-400 bg-red-50 dark:bg-red-950/30;
+}
+
+.custom-block.info {
+  @apply border border-blue-400 bg-blue-50 dark:bg-blue-950/30;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Chart showcase animations */
+@keyframes chartDraw {
+  0% {
+    stroke-dasharray: 0, 1000;
+    opacity: 0;
+  }
+  100% {
+    stroke-dasharray: 1000, 0;
+    opacity: 1;
+  }
+}
+
+.animate-chart-draw {
+  animation: chartDraw 2s ease-out forwards;
+}
+
+/* Gradient text helper */
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(to right, #F75930, #3B82F6);
+}
+
+/* Plugin card hover effects */
+.plugin-card {
+  @apply transition-all duration-300;
+}
+
+.plugin-card:hover {
+  @apply -translate-y-1 shadow-xl;
+}
+
+/* Feature grid items */
+.feature-item {
+  @apply relative overflow-hidden rounded-2xl border border-slate-200 bg-white/80 p-6 backdrop-blur-sm transition-all duration-300 dark:border-slate-700 dark:bg-slate-800/80;
+}
+
+.feature-item:hover {
+  @apply border-slate-300 shadow-lg dark:border-slate-600;
+}
+
+.feature-item::before {
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  content: '';
+  background: linear-gradient(135deg, rgba(247, 89, 48, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+}
+
+.feature-item:hover::before {
+  @apply opacity-100;
+}
