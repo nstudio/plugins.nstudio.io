@@ -56,11 +56,16 @@ export default defineConfig({
             { text: 'CardView', link: '/plugins/cardview' },
             { text: 'Carousel', link: '/plugins/carousel' },
             { text: 'Blur', link: '/plugins/blur' },
+            { text: 'Variable Blur View', link: '/plugins/variable-blur-view' },
             { text: 'Loading Indicator', link: '/plugins/loading-indicator' },
+            { text: 'Shimmer', link: '/plugins/shimmer' },
             { text: 'Fancy Alert', link: '/plugins/fancyalert' },
             { text: 'Filterable Listpicker', link: '/plugins/filterable-listpicker' },
             { text: 'Input Mask', link: '/plugins/input-mask' },
             { text: 'ExoPlayer', link: '/plugins/exoplayer' },
+            { text: 'Fluid Segmented Bar', link: '/plugins/fluid-segmented-bar' },
+            { text: 'Label Marquee', link: '/plugins/label-marquee' },
+            { text: 'Markdown View', link: '/plugins/markdown-view' },
           ],
         },
         {
@@ -83,6 +88,7 @@ export default defineConfig({
             { text: 'Aptabase', link: '/plugins/aptabase' },
             { text: 'Dynatrace', link: '/plugins/dynatrace' },
             { text: 'Appcues', link: '/plugins/appcues' },
+            { text: 'Smartlook', link: '/plugins/smartlook' },
           ],
         },
         {
@@ -108,6 +114,12 @@ export default defineConfig({
           text: 'Privacy & Tracking',
           items: [
             { text: 'Tracking Transparency', link: '/plugins/tracking-transparency' },
+          ],
+        },
+        {
+          text: 'Utilities',
+          items: [
+            { text: 'Font Icon', link: '/plugins/fonticon' },
           ],
         },
       ],
