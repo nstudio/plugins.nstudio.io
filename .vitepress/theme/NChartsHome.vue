@@ -302,18 +302,20 @@ const data: BarChartData = {
             v-for="snippet in chartSnippets"
             :key="snippet.title"
             :href="snippet.link"
-            class="group block overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800/50 dark:hover:border-blue-600"
+            class="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800/50 dark:hover:border-blue-600"
           >
-            <div class="flex items-center justify-between border-b border-slate-100 bg-slate-50 px-4 py-3 dark:border-slate-700 dark:bg-slate-800">
+            <div class="flex items-center justify-between border-b border-slate-100 bg-gradient-to-r from-slate-50 to-slate-100/80 px-4 py-3 dark:border-slate-700 dark:from-slate-800 dark:to-slate-800/80">
               <div class="flex items-center gap-2">
-                <span class="text-lg">{{ snippet.icon }}</span>
+                <span class="text-xl">{{ snippet.icon }}</span>
                 <span class="font-semibold text-slate-700 dark:text-slate-200">{{ snippet.title }}</span>
               </div>
               <svg class="h-4 w-4 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </div>
-            <CodeBlock :code="snippet.code" language="typescript" />
+            <div class="code-card-wrapper flex-1">
+              <CodeBlock :code="snippet.code" language="typescript" />
+            </div>
           </a>
         </div>
 
@@ -382,5 +384,30 @@ const data: BarChartData = {
 /* Glow effect for animated chart dots */
 .hero-dot {
   filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* Code card styling */
+.code-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+}
+
+.code-card-wrapper :deep(.code-block) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: 0;
+}
+
+.code-card-wrapper :deep(.code-block > div:last-child) {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.code-card-wrapper :deep(.code-block > div:last-child > *) {
+  width: 100%;
 }
 </style>
