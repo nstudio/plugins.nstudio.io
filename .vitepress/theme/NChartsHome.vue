@@ -137,7 +137,7 @@ const data: BarChartData = {
 <template>
   <div class="min-h-screen">
     <!-- Hero Section -->
-    <section class="relative overflow-hidden px-6 py-20 md:py-32">
+    <section class="relative overflow-hidden px-6 pt-10 pb-20 md:pb-32 md:pt-12">
       <div class="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-transparent to-emerald-600/5"></div>
       
       <!-- Background decorations -->
@@ -148,16 +148,16 @@ const data: BarChartData = {
         <div class="space-y-8 text-center">
           <!-- Badge -->
           <div class="inline-flex items-center gap-2 rounded-full border border-blue-200/50 bg-white/80 px-4 py-2 shadow-sm backdrop-blur-sm dark:border-blue-800 dark:bg-slate-800/80">
-            <span class="text-lg">✨</span>
+            <!-- <span class="text-lg">✨</span> -->
             <span class="text-sm font-medium text-slate-700 dark:text-slate-200">@nstudio/ncharts</span>
           </div>
 
           <!-- Headline -->
-          <h1 class="text-5xl font-bold leading-tight text-slate-900 dark:text-white md:text-7xl">
+          <!-- <h1 class="text-5xl font-bold leading-tight text-slate-900 dark:text-white md:text-7xl">
             <span class="block bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent">
               Charts for NativeScript
             </span>
-          </h1>
+          </h1> -->
 
           <!-- Subheadline -->
           <p class="mx-auto max-w-3xl text-xl leading-relaxed text-slate-600 dark:text-slate-300 md:text-2xl">
@@ -202,7 +202,7 @@ const data: BarChartData = {
         </div>
 
         <!-- Hero Chart Preview -->
-        <div class="relative mt-20">
+        <div class="relative mt-20 hidden md:block">
           <div class="absolute inset-0 z-10 bg-gradient-to-t from-slate-50 via-transparent to-transparent dark:from-slate-900"></div>
           <div class="relative overflow-hidden rounded-2xl border border-slate-200/50 bg-white/60 p-8 shadow-2xl backdrop-blur-xl dark:border-slate-700/50 dark:bg-slate-800/60">
             <div class="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl"></div>
@@ -284,18 +284,15 @@ const data: BarChartData = {
       </div>
     </section>
 
-    <!-- Chart Types Showcase -->
-    <ChartShowcase />
-
     <!-- Code Examples Section -->
-    <section class="px-6 py-20 md:py-32">
+    <section class="px-6 pt-10 pb-20 md:pb-32 md:pt-12">
       <div class="mx-auto max-w-7xl">
         <div class="mb-16 space-y-4 text-center">
           <h2 class="text-4xl font-bold text-slate-900 dark:text-white md:text-5xl">
             Simple API, Powerful Results
           </h2>
           <p class="mx-auto max-w-2xl text-xl text-slate-600 dark:text-slate-300">
-            Get started in minutes with our intuitive, type-safe API
+            Get started in minutes
           </p>
         </div>
 
@@ -344,8 +341,11 @@ const data: BarChartData = {
       </div>
     </section>
 
+    <!-- Chart Types Showcase -->
+    <ChartShowcase />
+
     <!-- Installation CTA -->
-    <section class="bg-gradient-to-br from-slate-900 to-slate-800 px-6 py-20 md:py-32">
+    <section class="bg-gradient-to-br from-slate-900 to-slate-800 px-6 pt-10 pb-20 md:pb-32 md:pt-12">
       <div class="mx-auto max-w-4xl text-center">
         <h2 class="text-3xl font-bold text-white md:text-4xl">
           Ready to Get Started?

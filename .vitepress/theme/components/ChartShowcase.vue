@@ -58,7 +58,7 @@ const activeChart = ref('line');
 </script>
 
 <template>
-  <section class="px-6 py-20 md:py-32">
+  <section class="px-6 pt-10 pb-20 md:pb-32 md:pt-12">
     <div class="mx-auto max-w-7xl">
       <div class="mb-16 space-y-4 text-center">
         <h2 class="text-4xl font-bold text-slate-900 dark:text-white md:text-5xl">
