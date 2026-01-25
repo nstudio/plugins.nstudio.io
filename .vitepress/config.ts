@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'en-US',
-  title: 'nStudio Plugins',
+  title: 'Plugins',
   description: 'NativeScript plugins from nStudio. Native performance, beautiful APIs, and production-grade tested.',
   
   srcDir: './content',

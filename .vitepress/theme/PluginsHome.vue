@@ -5,7 +5,7 @@ const plugins = [
   {
     name: '@nstudio/ncharts',
     title: 'nCharts',
-    description: 'Beautiful, high-performance native charts for NativeScript. Line, Bar, Pie, Scatter, Candlestick, Radar and more.',
+    description: 'Beautiful, high-performance native charts. Line, Bar, Pie, Scatter, Candlestick, Radar and more.',
     icon: '📊',
     gradient: 'from-blue-500 to-cyan-500',
     href: '/ncharts/',
@@ -301,18 +301,18 @@ const otherPlugins = plugins.filter(p => !p.featured);
             <span class="font-semibold text-white">NativeScript</span>
           </div> -->
 
-          <!-- <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
             <span class="block bg-gradient-to-r from-nstudio-orange via-orange-400 to-amber-400 bg-clip-text text-transparent leading-[1.2]">
               NativeScript Plugins
             </span>
-          </h1> -->
+          </h1>
 
           <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">
-            Powerful APIs. Production-ready quality.
+            Powerful APIs.
             <br class="hidden sm:block" />
             With support for Angular, React, Solid, Svelte, & Vue.
-            <br class="hidden sm:block" />
-            Built by <a href="https://nativescript.org" class="text-nstudio-orange hover:underline">NativeScript</a> partners.
+            <!-- <br class="hidden sm:block" />
+            Built by <a href="https://nativescript.org" class="text-nstudio-orange hover:underline">NativeScript</a> partners. -->
           </p>
 
           <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -450,7 +450,7 @@ const otherPlugins = plugins.filter(p => !p.featured);
             More Plugins
           </h2>
           <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
-            Explore our collection of high-quality NativeScript plugins
+            Explore our collection
           </p>
         </div>
 
@@ -488,12 +488,12 @@ const otherPlugins = plugins.filter(p => !p.featured);
     <section class="bg-gradient-to-br from-nstudio-navy to-slate-900 px-6 py-20 md:py-32">
       <div class="mx-auto max-w-4xl text-center">
         <h2 class="text-3xl font-bold text-white md:text-4xl">
-          Need a Custom Plugin?
+          Need Help?
         </h2>
         <p class="mt-4 text-lg text-slate-300">
-          Our team has deep expertise across a wide variety of languages and platforms.
+          Whether a custom plugin for specific needs or improving your agentic workflows, we can help.
           <br class="hidden sm:block" />
-          We can build custom plugins tailored to your specific needs.
+          Our team has deep expertise across a wide variety of languages and platforms.
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-4">
           <!-- <a
@@ -518,7 +518,7 @@ const otherPlugins = plugins.filter(p => !p.featured);
         <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div class="flex items-center gap-3">
             <img class="rounded-full w-[30px] h-[30px]" src="/logo.svg" alt="">
-            <span class="font-semibold text-slate-900 dark:text-white">nStudio Plugins</span>
+            <span class="font-semibold text-slate-900 dark:text-white">nStudio</span>
           </div>
           <!-- <p class="text-sm text-slate-500 dark:text-slate-400">
             Released under the MIT License.
