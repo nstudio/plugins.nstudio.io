@@ -36,10 +36,81 @@ export default defineConfig({
     nav: [
       { text: 'Plugins', link: '/' },
       { text: 'nCharts', link: '/ncharts/' },
+      { text: 'All Plugins', link: '/plugins/' },
       { text: 'nStudio', link: 'https://nstudio.io' },
     ],
 
     sidebar: {
+      '/plugins/': [
+        {
+          text: 'Overview',
+          items: [
+            { text: 'All Plugins', link: '/plugins/' },
+          ],
+        },
+        {
+          text: 'UI Components',
+          items: [
+            { text: 'Camera Plus', link: '/plugins/camera-plus' },
+            { text: 'Checkbox', link: '/plugins/checkbox' },
+            { text: 'CardView', link: '/plugins/cardview' },
+            { text: 'Carousel', link: '/plugins/carousel' },
+            { text: 'Blur', link: '/plugins/blur' },
+            { text: 'Loading Indicator', link: '/plugins/loading-indicator' },
+            { text: 'Fancy Alert', link: '/plugins/fancyalert' },
+            { text: 'Filterable Listpicker', link: '/plugins/filterable-listpicker' },
+            { text: 'Input Mask', link: '/plugins/input-mask' },
+            { text: 'ExoPlayer', link: '/plugins/exoplayer' },
+          ],
+        },
+        {
+          text: 'Barcode & Scanning',
+          items: [
+            { text: 'Barcode Scanner', link: '/plugins/barcodescanner' },
+          ],
+        },
+        {
+          text: 'Authentication & Identity',
+          items: [
+            { text: 'Auth0', link: '/plugins/auth0' },
+            { text: 'Onfido', link: '/plugins/onfido' },
+            { text: 'Persona', link: '/plugins/persona' },
+          ],
+        },
+        {
+          text: 'Analytics & Monitoring',
+          items: [
+            { text: 'Aptabase', link: '/plugins/aptabase' },
+            { text: 'Dynatrace', link: '/plugins/dynatrace' },
+            { text: 'Appcues', link: '/plugins/appcues' },
+          ],
+        },
+        {
+          text: 'Customer Support',
+          items: [
+            { text: 'Freshchat', link: '/plugins/freshchat' },
+            { text: 'Intercom', link: '/plugins/intercom' },
+          ],
+        },
+        {
+          text: 'Financial Services',
+          items: [
+            { text: 'Plaid', link: '/plugins/plaid' },
+          ],
+        },
+        {
+          text: 'Web3 & Blockchain',
+          items: [
+            { text: 'WalletConnect', link: '/plugins/walletconnect' },
+          ],
+        },
+        {
+          text: 'Privacy & Tracking',
+          items: [
+            { text: 'Tracking Transparency', link: '/plugins/tracking-transparency' },
+          ],
+        },
+      ],
       '/ncharts/': [
         {
           text: 'Getting Started',

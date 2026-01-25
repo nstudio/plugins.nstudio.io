@@ -1,8 +1,6 @@
 name = "plugins-nstudio-io"
 compatibility_date = "2024-01-01"
-
-[site]
-bucket = ".vitepress/dist"
+pages_build_output_dir = ".vitepress/dist"
 
 # Cloudflare Pages configuration
 # Note: Most Pages settings are configured in the Cloudflare dashboard
