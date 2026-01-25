@@ -5,6 +5,7 @@ import NChartsHome from './NChartsHome.vue';
 import ChartShowcase from './components/ChartShowcase.vue';
 import FeatureCard from './components/FeatureCard.vue';
 import CodePreview from './components/CodePreview.vue';
+import FrameworkTabs from './components/FrameworkTabs.vue';
 
 export default {
   extends: DefaultTheme,
@@ -14,5 +15,6 @@ export default {
     app.component('ChartShowcase', ChartShowcase);
     app.component('FeatureCard', FeatureCard);
     app.component('CodePreview', CodePreview);
+    app.component('FrameworkTabs', FrameworkTabs);
   },
 };

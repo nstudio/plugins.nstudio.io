@@ -4,6 +4,9 @@ Bar charts are ideal for comparing discrete categories, showing rankings, and di
 
 ## Basic Usage
 
+<FrameworkTabs>
+<template #angular>
+
 ```html
 <!-- Vertical Bar Chart -->
 <BarChart
@@ -23,6 +26,101 @@ Bar charts are ideal for comparing discrete categories, showing rankings, and di
   [animation]="animationConfig">
 </HorizontalBarChart>
 ```
+
+</template>
+<template #react>
+
+```tsx
+{/* Vertical Bar Chart */}
+<barChart
+  data={barData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+
+{/* Horizontal Bar Chart */}
+<horizontalBarChart
+  data={barData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<!-- Vertical Bar Chart -->
+<BarChart
+  :data="barData"
+  :legend="legendConfig"
+  :xAxis="xAxisConfig"
+  :yAxis="yAxisConfig"
+  :animation="animationConfig"
+/>
+
+<!-- Horizontal Bar Chart -->
+<HorizontalBarChart
+  :data="barData"
+  :legend="legendConfig"
+  :xAxis="xAxisConfig"
+  :yAxis="yAxisConfig"
+  :animation="animationConfig"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<!-- Vertical Bar Chart -->
+<barChart
+  data={barData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+
+<!-- Horizontal Bar Chart -->
+<horizontalBarChart
+  data={barData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+{/* Vertical Bar Chart */}
+<barChart
+  data={barData()}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+
+{/* Horizontal Bar Chart */}
+<horizontalBarChart
+  data={barData()}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+</FrameworkTabs>
 
 ## Data Format
 
@@ -229,7 +327,10 @@ const yAxis: YAxisConfigDual = {
 };
 ```
 
-## Template (Angular)
+## Template
+
+<FrameworkTabs>
+<template #angular>
 
 ```html
 <BarChart
@@ -249,9 +350,250 @@ const yAxis: YAxisConfigDual = {
 </BarChart>
 ```
 
+</template>
+<template #react>
+
+```tsx
+import * as React from "react";
+import { useState, useRef } from "react";
+import type { BarChartData, ChartAnimation, LegendConfig, XAxisConfig, YAxisConfigDual, BarChart } from "@nstudio/ncharts";
+
+export const BarChartDemo = () => {
+  const barChartRef = useRef<BarChart | null>(null);
+  const [selectedData, setSelectedData] = useState(null);
+
+  const revenueData: BarChartData = {
+    dataSets: [
+      {
+        label: 'Revenue (M)',
+        values: [
+          { x: 0, y: 2.4 },
+          { x: 1, y: 3.2 },
+          { x: 2, y: 2.8 },
+          { x: 3, y: 4.1 },
+        ],
+        config: {
+          colors: ['#10B981', '#34D399', '#6EE7B7', '#A7F3D0'],
+          drawValues: true,
+          valueTextSize: 12,
+          valueTextColor: '#374151',
+        },
+      },
+    ],
+  };
+
+  return (
+    <barChart
+      ref={barChartRef}
+      data={revenueData}
+      animation={{ durationX: 1000, durationY: 1000, easingX: 'EaseOutBack' }}
+      legend={{ enabled: true, horizontalAlignment: 'CENTER', verticalAlignment: 'BOTTOM' }}
+      xAxis={{ enabled: true, position: 'BOTTOM', valueFormatter: ['Q1', 'Q2', 'Q3', 'Q4'] }}
+      yAxis={{ left: { enabled: true, drawGridLines: true, axisMinimum: 0 }, right: { enabled: false } }}
+      touchEnabled={true}
+      highlightPerTapEnabled={true}
+      onSelect={(event) => setSelectedData(event.data)}
+      onDeselect={() => setSelectedData(null)}
+      className="h-80 w-full"
+    />
+  );
+};
+```
+
+</template>
+<template #vue>
+
+```vue
+<script lang="ts" setup>
+import { ref, computed } from 'vue';
+import type { BarChartData, ChartSelectEvent } from '@nstudio/ncharts';
+
+const selectedValue = ref('');
+const isHorizontal = ref(false);
+
+const chartData: BarChartData = {
+  dataSets: [
+    {
+      label: 'Revenue (M)',
+      values: [
+        { x: 0, y: 2.4 },
+        { x: 1, y: 3.2 },
+        { x: 2, y: 2.8 },
+        { x: 3, y: 4.1 },
+      ],
+      config: {
+        colors: ['#10B981', '#34D399', '#6EE7B7', '#A7F3D0'],
+        drawValues: true,
+        valueTextSize: 12,
+        valueTextColor: '#FFFFFF',
+      },
+    },
+  ],
+};
+
+function handleValueSelected(event: ChartSelectEvent) {
+  if (event.data) {
+    selectedValue.value = `Index: ${event.data.x?.toFixed(0)}, Value: ${event.data.y?.toFixed(0)}`;
+  }
+}
+</script>
+
+<template>
+  <BarChart
+    v-if="!isHorizontal"
+    :data="chartData"
+    :animation="{ durationX: 1000, durationY: 1000, easingX: 'EaseOutBack' }"
+    :legend="{ enabled: true }"
+    :xAxis="{ enabled: true, valueFormatter: ['Q1', 'Q2', 'Q3', 'Q4'] }"
+    :yAxis="{ left: { enabled: true, axisMinimum: 0 }, right: { enabled: false } }"
+    :highlightPerTapEnabled="true"
+    @select="handleValueSelected"
+    class="h-80 w-full"
+  />
+  <HorizontalBarChart
+    v-else
+    :data="chartData"
+    :animation="{ durationX: 1000, durationY: 1000 }"
+    class="h-80 w-full"
+  />
+</template>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<script lang="ts">
+  import type { BarChartData, ChartSelectData } from '@nstudio/ncharts';
+
+  let selectedData: ChartSelectData | null = null;
+  let isHorizontal = false;
+
+  const revenueData: BarChartData = {
+    dataSets: [
+      {
+        label: 'Revenue (M)',
+        values: [
+          { x: 0, y: 2.4 },
+          { x: 1, y: 3.2 },
+          { x: 2, y: 2.8 },
+          { x: 3, y: 4.1 },
+        ],
+        config: {
+          colors: ['#10B981', '#34D399', '#6EE7B7', '#A7F3D0'],
+          drawValues: true,
+          valueTextSize: 12,
+          valueTextColor: '#374151',
+        },
+      },
+    ],
+  };
+
+  const legendConfig = { enabled: true, horizontalAlignment: 'CENTER', verticalAlignment: 'BOTTOM' };
+  const xAxisConfig = { enabled: true, position: 'BOTTOM', valueFormatter: ['Q1', 'Q2', 'Q3', 'Q4'] };
+  const yAxisConfig = { left: { enabled: true, drawGridLines: true, axisMinimum: 0 }, right: { enabled: false } };
+  const animationConfig = { durationX: 1000, durationY: 1000, easingX: 'EaseOutBack' };
+
+  function handleSelect(event: CustomEvent) {
+    selectedData = event.detail.data;
+  }
+</script>
+
+{#if !isHorizontal}
+  <barChart
+    data={revenueData}
+    animation={animationConfig}
+    legend={legendConfig}
+    xAxis={xAxisConfig}
+    yAxis={yAxisConfig}
+    touchEnabled={true}
+    highlightPerTapEnabled={true}
+    on:select={handleSelect}
+    on:deselect={() => selectedData = null}
+    class="h-80 w-full"
+  />
+{:else}
+  <horizontalBarChart
+    data={revenueData}
+    animation={animationConfig}
+    class="h-80 w-full"
+  />
+{/if}
+```
+
+</template>
+<template #solid>
+
+```jsx
+import { createSignal } from 'solid-js';
+
+export const BarChartDemo = () => {
+  let barChartRef;
+  const [isHorizontal, setIsHorizontal] = createSignal(false);
+  const [selectedData, setSelectedData] = createSignal(null);
+
+  const revenueData = () => ({
+    dataSets: [
+      {
+        label: 'Revenue (M)',
+        values: [
+          { x: 0, y: 2.4 },
+          { x: 1, y: 3.2 },
+          { x: 2, y: 2.8 },
+          { x: 3, y: 4.1 },
+        ],
+        config: {
+          colors: ['#10B981', '#34D399', '#6EE7B7', '#A7F3D0'],
+          drawValues: true,
+          valueTextSize: 12,
+          valueTextColor: '#374151',
+        },
+      },
+    ],
+  });
+
+  const legendConfig = { enabled: true, horizontalAlignment: 'CENTER', verticalAlignment: 'BOTTOM' };
+  const xAxisConfig = { enabled: true, position: 'BOTTOM', valueFormatter: ['Q1', 'Q2', 'Q3', 'Q4'] };
+  const yAxisConfig = { left: { enabled: true, drawGridLines: true, axisMinimum: 0 }, right: { enabled: false } };
+  const animationConfig = { durationX: 1000, durationY: 1000, easingX: 'EaseOutBack' };
+
+  return (
+    <>
+      {!isHorizontal() ? (
+        <barChart
+          ref={barChartRef}
+          data={revenueData()}
+          animation={animationConfig}
+          legend={legendConfig}
+          xAxis={xAxisConfig}
+          yAxis={yAxisConfig}
+          touchEnabled={true}
+          highlightPerTapEnabled={true}
+          onSelect={(event) => setSelectedData(event.data)}
+          onDeselect={() => setSelectedData(null)}
+          class="h-80 w-full"
+        />
+      ) : (
+        <horizontalBarChart
+          data={revenueData()}
+          animation={animationConfig}
+          class="h-80 w-full"
+        />
+      )}
+    </>
+  );
+};
+```
+
+</template>
+</FrameworkTabs>
+
 ## Horizontal Bar Chart
 
 For horizontal orientation, use `HorizontalBarChart`:
+
+<FrameworkTabs>
+<template #angular>
 
 ```html
 <HorizontalBarChart
@@ -263,6 +605,65 @@ For horizontal orientation, use `HorizontalBarChart`:
   class="h-80 w-full">
 </HorizontalBarChart>
 ```
+
+</template>
+<template #react>
+
+```tsx
+<horizontalBarChart
+  data={barData}
+  legend={legend}
+  xAxis={xAxis}
+  yAxis={yAxis}
+  animation={animation}
+  className="h-80 w-full"
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<HorizontalBarChart
+  :data="barData"
+  :legend="legend"
+  :xAxis="xAxis"
+  :yAxis="yAxis"
+  :animation="animation"
+  class="h-80 w-full"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<horizontalBarChart
+  data={barData}
+  legend={legend}
+  xAxis={xAxis}
+  yAxis={yAxis}
+  animation={animation}
+  class="h-80 w-full"
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<horizontalBarChart
+  data={barData()}
+  legend={legend}
+  xAxis={xAxis}
+  yAxis={yAxis}
+  animation={animation}
+  class="h-80 w-full"
+/>
+```
+
+</template>
+</FrameworkTabs>
 
 ::: tip Axis Swap
 In horizontal bar charts, the X-axis shows values and Y-axis shows categories. Configure accordingly.

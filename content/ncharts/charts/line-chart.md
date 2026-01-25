@@ -4,6 +4,9 @@ Line charts are perfect for visualizing trends over time, comparing multiple dat
 
 ## Basic Usage
 
+<FrameworkTabs>
+<template #angular>
+
 ```html
 <LineChart
   [data]="lineData"
@@ -13,6 +16,61 @@ Line charts are perfect for visualizing trends over time, comparing multiple dat
   [animation]="animationConfig">
 </LineChart>
 ```
+
+</template>
+<template #react>
+
+```tsx
+<lineChart
+  data={lineData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<LineChart
+  :data="lineData"
+  :legend="legendConfig"
+  :xAxis="xAxisConfig"
+  :yAxis="yAxisConfig"
+  :animation="animationConfig"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<lineChart
+  data={lineData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<lineChart
+  data={lineData()}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+</FrameworkTabs>
 
 ## Data Format
 
@@ -283,7 +341,10 @@ const yAxis: YAxisConfigDual = {
 };
 ```
 
-## Template (Angular)
+## Template
+
+<FrameworkTabs>
+<template #angular>
 
 ```html
 <LineChart
@@ -304,6 +365,240 @@ const yAxis: YAxisConfigDual = {
   class="h-80 w-full">
 </LineChart>
 ```
+
+</template>
+<template #react>
+
+```tsx
+import * as React from "react";
+import { useState, useRef } from "react";
+import type { LineChartData, ChartAnimation, LegendConfig, XAxisConfig, YAxisConfigDual, LineChart } from "@nstudio/ncharts";
+
+export const LineChartDemo = () => {
+  const lineChartRef = useRef<LineChart | null>(null);
+  const [selectedData, setSelectedData] = useState(null);
+
+  const chartData: LineChartData = {
+    dataSets: [
+      {
+        label: '2024 Revenue',
+        values: [
+          { x: 0, y: 45 }, { x: 1, y: 52 }, { x: 2, y: 48 }, { x: 3, y: 65 },
+          { x: 4, y: 78 }, { x: 5, y: 72 }, { x: 6, y: 85 }, { x: 7, y: 92 },
+        ],
+        config: {
+          color: '#3B82F6',
+          lineWidth: 3,
+          drawCircles: true,
+          circleRadius: 5,
+          circleColor: '#3B82F6',
+          drawFilled: true,
+          fillColor: '#3B82F6',
+          fillAlpha: 40,
+          mode: 'CUBIC_BEZIER',
+          drawValues: false,
+        },
+      },
+    ],
+  };
+
+  return (
+    <lineChart
+      ref={lineChartRef}
+      data={chartData}
+      animation={{ durationX: 1200, durationY: 1200, easingX: 'EaseInOutQuad' }}
+      legend={{ enabled: true, horizontalAlignment: 'CENTER', verticalAlignment: 'BOTTOM' }}
+      xAxis={{ enabled: true, position: 'BOTTOM', drawGridLines: true }}
+      yAxis={{ left: { enabled: true, drawGridLines: true }, right: { enabled: false } }}
+      touchEnabled={true}
+      dragEnabled={true}
+      scaleEnabled={true}
+      pinchZoom={true}
+      highlightPerTapEnabled={true}
+      onSelect={(event) => setSelectedData(event.data)}
+      onDeselect={() => setSelectedData(null)}
+      className="h-80 w-full"
+    />
+  );
+};
+```
+
+</template>
+<template #vue>
+
+```vue
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { LineChartData, ChartSelectEvent } from '@nstudio/ncharts';
+
+const selectedValue = ref('');
+
+const chartData: LineChartData = {
+  dataSets: [
+    {
+      label: 'Series A',
+      values: [
+        { x: 0, y: 45 }, { x: 1, y: 52 }, { x: 2, y: 48 }, { x: 3, y: 65 },
+        { x: 4, y: 78 }, { x: 5, y: 72 }, { x: 6, y: 85 }, { x: 7, y: 92 },
+      ],
+      config: {
+        color: '#3B82F6',
+        lineWidth: 2,
+        drawCircles: true,
+        circleRadius: 4,
+        circleColor: '#3B82F6',
+        drawFilled: false,
+        mode: 'HORIZONTAL_BEZIER',
+        drawValues: false,
+      },
+    },
+  ],
+};
+
+function handleValueSelected(event: ChartSelectEvent) {
+  if (event.data) {
+    selectedValue.value = `X: ${event.data.x}, Y: ${event.data.y?.toFixed(1)}`;
+  }
+}
+</script>
+
+<template>
+  <LineChart
+    :data="chartData"
+    :animation="{ durationX: 1200, durationY: 1200 }"
+    :legend="{ enabled: true, horizontalAlignment: 'CENTER', verticalAlignment: 'BOTTOM' }"
+    :xAxis="{ enabled: true, position: 'BOTTOM', drawGridLines: true }"
+    :yAxis="{ left: { enabled: true, drawGridLines: true }, right: { enabled: false } }"
+    :touchEnabled="true"
+    :highlightPerTapEnabled="true"
+    @select="handleValueSelected"
+    class="h-80 w-full"
+  />
+</template>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<script lang="ts">
+  import type { LineChartData, ChartSelectData } from '@nstudio/ncharts';
+
+  let selectedData: ChartSelectData | null = null;
+
+  const chartData: LineChartData = {
+    dataSets: [
+      {
+        label: '2024 Revenue',
+        values: [
+          { x: 0, y: 45 }, { x: 1, y: 52 }, { x: 2, y: 48 }, { x: 3, y: 65 },
+          { x: 4, y: 78 }, { x: 5, y: 72 }, { x: 6, y: 85 }, { x: 7, y: 92 },
+        ],
+        config: {
+          color: '#3B82F6',
+          lineWidth: 3,
+          drawCircles: true,
+          circleRadius: 5,
+          circleColor: '#3B82F6',
+          drawFilled: true,
+          fillColor: '#3B82F6',
+          fillAlpha: 40,
+          mode: 'CUBIC_BEZIER',
+          drawValues: false,
+        },
+      },
+    ],
+  };
+
+  const legendConfig = { enabled: true, horizontalAlignment: 'CENTER', verticalAlignment: 'BOTTOM' };
+  const xAxisConfig = { enabled: true, position: 'BOTTOM', drawGridLines: true };
+  const yAxisConfig = { left: { enabled: true, drawGridLines: true }, right: { enabled: false } };
+  const animationConfig = { durationX: 1200, durationY: 1200, easingX: 'EaseInOutQuad' };
+
+  function handleSelect(event: CustomEvent) {
+    selectedData = event.detail.data;
+  }
+</script>
+
+<lineChart
+  data={chartData}
+  animation={animationConfig}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  touchEnabled={true}
+  dragEnabled={true}
+  scaleEnabled={true}
+  pinchZoom={true}
+  highlightPerTapEnabled={true}
+  on:select={handleSelect}
+  on:deselect={() => selectedData = null}
+  class="h-80 w-full"
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+import { createSignal, createMemo } from 'solid-js';
+
+export const LineChartDemo = () => {
+  let lineChartRef;
+  const [selectedData, setSelectedData] = createSignal(null);
+
+  const chartData = () => ({
+    dataSets: [
+      {
+        label: '2024 Revenue',
+        values: [
+          { x: 0, y: 45 }, { x: 1, y: 52 }, { x: 2, y: 48 }, { x: 3, y: 65 },
+          { x: 4, y: 78 }, { x: 5, y: 72 }, { x: 6, y: 85 }, { x: 7, y: 92 },
+        ],
+        config: {
+          color: '#3B82F6',
+          lineWidth: 3,
+          drawCircles: true,
+          circleRadius: 5,
+          circleColor: '#3B82F6',
+          drawFilled: true,
+          fillColor: '#3B82F6',
+          fillAlpha: 40,
+          mode: 'CUBIC_BEZIER',
+          drawValues: false,
+        },
+      },
+    ],
+  });
+
+  const legendConfig = { enabled: true, horizontalAlignment: 'CENTER', verticalAlignment: 'BOTTOM' };
+  const xAxisConfig = { enabled: true, position: 'BOTTOM', drawGridLines: true };
+  const yAxisConfig = { left: { enabled: true, drawGridLines: true }, right: { enabled: false } };
+  const animationConfig = { durationX: 1200, durationY: 1200, easingX: 'EaseInOutQuad' };
+
+  return (
+    <lineChart
+      ref={lineChartRef}
+      data={chartData()}
+      animation={animationConfig}
+      legend={legendConfig}
+      xAxis={xAxisConfig}
+      yAxis={yAxisConfig}
+      touchEnabled={true}
+      dragEnabled={true}
+      scaleEnabled={true}
+      pinchZoom={true}
+      highlightPerTapEnabled={true}
+      onSelect={(event) => setSelectedData(event.data)}
+      onDeselect={() => setSelectedData(null)}
+      class="h-80 w-full"
+    />
+  );
+};
+```
+
+</template>
+</FrameworkTabs>
 
 ## Methods
 

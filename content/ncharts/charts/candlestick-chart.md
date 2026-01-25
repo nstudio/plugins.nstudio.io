@@ -4,6 +4,9 @@ Candlestick charts are essential for financial data visualization, showing OHLC 
 
 ## Basic Usage
 
+<FrameworkTabs>
+<template #angular>
+
 ```html
 <CandleStickChart
   [data]="candleData"
@@ -13,6 +16,61 @@ Candlestick charts are essential for financial data visualization, showing OHLC 
   [animation]="animationConfig">
 </CandleStickChart>
 ```
+
+</template>
+<template #react>
+
+```tsx
+<candlestickChart
+  data={candleData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<CandlestickChart
+  :data="candleData"
+  :legend="legendConfig"
+  :xAxis="xAxisConfig"
+  :yAxis="yAxisConfig"
+  :animation="animationConfig"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<candlestickChart
+  data={candleData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<candlestickChart
+  data={candleData()}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+</FrameworkTabs>
 
 ## Data Format
 

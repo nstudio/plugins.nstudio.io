@@ -4,6 +4,9 @@ Bubble charts extend scatter plots by adding a third dimension (size), perfect f
 
 ## Basic Usage
 
+<FrameworkTabs>
+<template #angular>
+
 ```html
 <BubbleChart
   [data]="bubbleData"
@@ -13,6 +16,61 @@ Bubble charts extend scatter plots by adding a third dimension (size), perfect f
   [animation]="animationConfig">
 </BubbleChart>
 ```
+
+</template>
+<template #react>
+
+```tsx
+<bubbleChart
+  data={bubbleData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<BubbleChart
+  :data="bubbleData"
+  :legend="legendConfig"
+  :xAxis="xAxisConfig"
+  :yAxis="yAxisConfig"
+  :animation="animationConfig"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<bubbleChart
+  data={bubbleData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<bubbleChart
+  data={bubbleData()}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+</FrameworkTabs>
 
 ## Data Format
 

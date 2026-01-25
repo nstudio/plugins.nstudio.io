@@ -89,10 +89,10 @@ export default defineConfig({
       { icon: 'twitter', link: 'https://twitter.com/teamnstudio' },
     ],
 
-    footer: {
-    //   message: 'Released under the Apache-2.0 License.',
-      copyright: `Copyright © ${new Date().getFullYear()} nStudio`,
-    },
+    // footer: {
+    // //   message: 'Released under the Apache-2.0 License.',
+    //   copyright: `Copyright © ${new Date().getFullYear()} nStudio`,
+    // },
 
     search: {
       provider: 'local',

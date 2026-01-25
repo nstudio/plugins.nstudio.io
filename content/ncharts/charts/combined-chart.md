@@ -4,6 +4,9 @@ Combined charts allow you to overlay multiple chart types in a single view, perf
 
 ## Basic Usage
 
+<FrameworkTabs>
+<template #angular>
+
 ```html
 <CombinedChart
   [data]="combinedData"
@@ -13,6 +16,61 @@ Combined charts allow you to overlay multiple chart types in a single view, perf
   [animation]="animationConfig">
 </CombinedChart>
 ```
+
+</template>
+<template #react>
+
+```tsx
+<combinedChart
+  data={combinedData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<CombinedChart
+  :data="combinedData"
+  :legend="legendConfig"
+  :xAxis="xAxisConfig"
+  :yAxis="yAxisConfig"
+  :animation="animationConfig"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<combinedChart
+  data={combinedData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<combinedChart
+  data={combinedData()}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+</FrameworkTabs>
 
 ## Data Format
 

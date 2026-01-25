@@ -49,82 +49,209 @@ API level 21 (Android 5.0) or higher is required.
 
 ## Framework Integration
 
-### Angular
+<FrameworkTabs>
+<template #angular>
 
-1. Register the chart elements in your `main.ts`:
+**1. Register the chart elements in your `main.ts`:**
 
 ```typescript
 import { registerNchartsElements } from '@nstudio/ncharts/angular';
 registerNchartsElements();
 ```
 
-2. Import the module in your feature module or use standalone directives:
+**2. Import the directives in your component:**
 
 ```typescript
-// Option 1: Module import
-import { NativeScriptNchartsModule } from '@nstudio/ncharts/angular';
-
-@NgModule({
-  imports: [NativeScriptNchartsModule],
-})
-export class YourModule {}
-
-// Option 2: Standalone directive import
-import { LineChartDirective } from '@nstudio/ncharts/angular';
+import { Component } from '@angular/core';
+import { LineChartDirective, BarChartDirective, PieChartDirective } from '@nstudio/ncharts/angular';
+import type { LineChartData } from '@nstudio/ncharts';
 
 @Component({
+  selector: 'app-chart',
+  template: `
+    <LineChart
+      [data]="chartData"
+      [animation]="animation"
+      class="h-80">
+    </LineChart>
+  `,
   imports: [LineChartDirective],
-  // ...
 })
-export class YourComponent {}
+export class ChartComponent {
+  chartData: LineChartData = { /* ... */ };
+}
 ```
 
-### Core / Plain NativeScript
+</template>
+<template #react>
 
-Import and use the chart classes directly:
+**1. Register elements in your app entry:**
 
-```typescript
-import { LineChart } from '@nstudio/ncharts';
+```tsx
+import { registerElement } from 'react-nativescript';
+import { 
+  LineChart, BarChart, PieChart, 
+  ScatterChart, BubbleChart, RadarChart,
+  CandlestickChart, CombinedChart, HorizontalBarChart 
+} from '@nstudio/ncharts';
 
-const chart = new LineChart();
-chart.data = lineChartData;
+registerElement('lineChart', () => LineChart);
+registerElement('barChart', () => BarChart);
+registerElement('pieChart', () => PieChart);
+registerElement('scatterChart', () => ScatterChart);
+registerElement('bubbleChart', () => BubbleChart);
+registerElement('radarChart', () => RadarChart);
+registerElement('candlestickChart', () => CandlestickChart);
+registerElement('combinedChart', () => CombinedChart);
+registerElement('horizontalBarChart', () => HorizontalBarChart);
 ```
 
-### Vue
+**2. Use in your component:**
 
-Register the chart elements:
+```tsx
+import * as React from "react";
+import type { LineChartData } from "@nstudio/ncharts";
+
+export const ChartDemo = () => {
+  const chartData: LineChartData = { /* ... */ };
+
+  return (
+    <lineChart
+      data={chartData}
+      animation={{ durationX: 1200, durationY: 1200 }}
+      className="h-80"
+    />
+  );
+};
+```
+
+</template>
+<template #vue>
+
+**1. Register the chart elements in your app entry:**
 
 ```typescript
 import { registerElement } from 'nativescript-vue';
-import { LineChart, BarChart, PieChart } from '@nstudio/ncharts';
+import { 
+  LineChart, BarChart, PieChart, 
+  ScatterChart, BubbleChart, RadarChart,
+  CandlestickChart, CombinedChart, HorizontalBarChart 
+} from '@nstudio/ncharts';
 
 registerElement('LineChart', () => LineChart);
 registerElement('BarChart', () => BarChart);
 registerElement('PieChart', () => PieChart);
-// ... register other charts as needed
+registerElement('ScatterChart', () => ScatterChart);
+registerElement('BubbleChart', () => BubbleChart);
+registerElement('RadarChart', () => RadarChart);
+registerElement('CandlestickChart', () => CandlestickChart);
+registerElement('CombinedChart', () => CombinedChart);
+registerElement('HorizontalBarChart', () => HorizontalBarChart);
 ```
 
-### React
+**2. Use in your component:**
 
-Using `react-nativescript`:
+```vue
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { LineChartData } from '@nstudio/ncharts';
 
-```tsx
-import { registerElement } from 'react-nativescript';
-import { LineChart } from '@nstudio/ncharts';
+const chartData = ref<LineChartData>({ /* ... */ });
+</script>
 
-registerElement('lineChart', () => LineChart);
+<template>
+  <LineChart
+    :data="chartData"
+    :animation="{ durationX: 1200, durationY: 1200 }"
+    class="h-80"
+  />
+</template>
 ```
 
-### Svelte
+</template>
+<template #svelte>
 
-Register the chart elements in your app:
+**1. Register the chart elements in your app:**
 
 ```typescript
 import { registerNativeViewElement } from 'svelte-native/dom';
-import { LineChart } from '@nstudio/ncharts';
+import { 
+  LineChart, BarChart, PieChart, 
+  ScatterChart, BubbleChart, RadarChart,
+  CandlestickChart, CombinedChart, HorizontalBarChart 
+} from '@nstudio/ncharts';
 
 registerNativeViewElement('lineChart', () => LineChart);
+registerNativeViewElement('barChart', () => BarChart);
+registerNativeViewElement('pieChart', () => PieChart);
+registerNativeViewElement('scatterChart', () => ScatterChart);
+registerNativeViewElement('bubbleChart', () => BubbleChart);
+registerNativeViewElement('radarChart', () => RadarChart);
+registerNativeViewElement('candlestickChart', () => CandlestickChart);
+registerNativeViewElement('combinedChart', () => CombinedChart);
+registerNativeViewElement('horizontalBarChart', () => HorizontalBarChart);
 ```
+
+**2. Use in your component:**
+
+```svelte
+<script lang="ts">
+  import type { LineChartData } from '@nstudio/ncharts';
+
+  let chartData: LineChartData = { /* ... */ };
+</script>
+
+<lineChart
+  data={chartData}
+  animation={{ durationX: 1200, durationY: 1200 }}
+  class="h-80"
+/>
+```
+
+</template>
+<template #solid>
+
+**1. Register elements in your app entry:**
+
+```jsx
+import { registerElement } from 'dominative';
+import { 
+  LineChart, BarChart, PieChart, 
+  ScatterChart, BubbleChart, RadarChart,
+  CandlestickChart, CombinedChart, HorizontalBarChart 
+} from '@nstudio/ncharts';
+
+registerElement('lineChart', LineChart);
+registerElement('barChart', BarChart);
+registerElement('pieChart', PieChart);
+registerElement('scatterChart', ScatterChart);
+registerElement('bubbleChart', BubbleChart);
+registerElement('radarChart', RadarChart);
+registerElement('candlestickChart', CandlestickChart);
+registerElement('combinedChart', CombinedChart);
+registerElement('horizontalBarChart', HorizontalBarChart);
+```
+
+**2. Use in your component:**
+
+```jsx
+import { createSignal } from 'solid-js';
+
+export const ChartDemo = () => {
+  const [chartData, setChartData] = createSignal({ /* ... */ });
+
+  return (
+    <lineChart
+      data={chartData()}
+      animation={{ durationX: 1200, durationY: 1200 }}
+      class="h-80"
+    />
+  );
+};
+```
+
+</template>
+</FrameworkTabs>
 
 ## Verify Installation
 
@@ -160,3 +287,4 @@ If the chart renders without errors, you're all set!
 - [Quick Start Guide](/ncharts/quick-start) - Build your first chart
 - [Chart Types](/ncharts/charts/line-chart) - Explore available charts
 - [Configuration](/ncharts/config/animation) - Customize your charts
+

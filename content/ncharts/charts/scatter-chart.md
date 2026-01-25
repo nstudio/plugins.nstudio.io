@@ -4,6 +4,9 @@ Scatter charts are ideal for visualizing correlations between two variables, ide
 
 ## Basic Usage
 
+<FrameworkTabs>
+<template #angular>
+
 ```html
 <ScatterChart
   [data]="scatterData"
@@ -13,6 +16,61 @@ Scatter charts are ideal for visualizing correlations between two variables, ide
   [animation]="animationConfig">
 </ScatterChart>
 ```
+
+</template>
+<template #react>
+
+```tsx
+<scatterChart
+  data={scatterData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<ScatterChart
+  :data="scatterData"
+  :legend="legendConfig"
+  :xAxis="xAxisConfig"
+  :yAxis="yAxisConfig"
+  :animation="animationConfig"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<scatterChart
+  data={scatterData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<scatterChart
+  data={scatterData()}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  animation={animationConfig}
+/>
+```
+
+</template>
+</FrameworkTabs>
 
 ## Data Format
 

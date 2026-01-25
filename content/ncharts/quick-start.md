@@ -105,7 +105,10 @@ const yAxis: YAxisConfigDual = {
 };
 ```
 
-### 4. Use in Your Template (Angular)
+### 4. Use in Your Template
+
+<FrameworkTabs>
+<template #angular>
 
 ```html
 <LineChart
@@ -125,7 +128,97 @@ const yAxis: YAxisConfigDual = {
 </LineChart>
 ```
 
+</template>
+<template #react>
+
+```tsx
+<lineChart
+  data={lineData}
+  animation={animation}
+  legend={legend}
+  xAxis={xAxis}
+  yAxis={yAxis}
+  touchEnabled={true}
+  dragEnabled={true}
+  scaleEnabled={true}
+  pinchZoom={true}
+  highlightPerTapEnabled={true}
+  onSelect={handleChartSelect}
+  onDeselect={handleChartDeselect}
+  className="h-80"
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<LineChart
+  :data="lineData"
+  :animation="animation"
+  :legend="legend"
+  :xAxis="xAxis"
+  :yAxis="yAxis"
+  :touchEnabled="true"
+  :dragEnabled="true"
+  :scaleEnabled="true"
+  :pinchZoom="true"
+  :highlightPerTapEnabled="true"
+  @select="onChartSelect"
+  @deselect="onChartDeselect"
+  class="h-80"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<lineChart
+  data={lineData}
+  animation={animation}
+  legend={legend}
+  xAxis={xAxis}
+  yAxis={yAxis}
+  touchEnabled={true}
+  dragEnabled={true}
+  scaleEnabled={true}
+  pinchZoom={true}
+  highlightPerTapEnabled={true}
+  on:select={handleChartSelect}
+  on:deselect={handleChartDeselect}
+  class="h-80"
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<lineChart
+  data={lineData()}
+  animation={animation}
+  legend={legend}
+  xAxis={xAxis}
+  yAxis={yAxis}
+  touchEnabled={true}
+  dragEnabled={true}
+  scaleEnabled={true}
+  pinchZoom={true}
+  highlightPerTapEnabled={true}
+  onSelect={handleChartSelect}
+  onDeselect={handleChartDeselect}
+  class="h-80"
+/>
+```
+
+</template>
+</FrameworkTabs>
+
 ### 5. Handle Selection Events
+
+<FrameworkTabs>
+<template #angular>
 
 ```typescript
 import type { ChartSelectEvent } from '@nstudio/ncharts';
@@ -139,6 +232,71 @@ onChartDeselect(): void {
   console.log('Selection cleared');
 }
 ```
+
+</template>
+<template #react>
+
+```tsx
+import type { ChartSelectEvent } from "@nstudio/ncharts";
+
+const handleChartSelect = (event: ChartSelectEvent) => {
+  const { x, y, dataSetIndex, dataIndex } = event.data;
+  console.log(`Selected: x=${x}, y=${y}, dataset=${dataSetIndex}`);
+};
+
+const handleChartDeselect = () => {
+  console.log('Selection cleared');
+};
+```
+
+</template>
+<template #vue>
+
+```typescript
+import type { ChartSelectEvent } from '@nstudio/ncharts';
+
+function onChartSelect(event: ChartSelectEvent): void {
+  const { x, y, dataSetIndex, dataIndex } = event.data;
+  console.log(`Selected: x=${x}, y=${y}, dataset=${dataSetIndex}`);
+}
+
+function onChartDeselect(): void {
+  console.log('Selection cleared');
+}
+```
+
+</template>
+<template #svelte>
+
+```typescript
+import type { ChartSelectEvent } from '@nstudio/ncharts';
+
+function handleChartSelect(event: CustomEvent<ChartSelectEvent>) {
+  const { x, y, dataSetIndex, dataIndex } = event.detail.data;
+  console.log(`Selected: x=${x}, y=${y}, dataset=${dataSetIndex}`);
+}
+
+function handleChartDeselect() {
+  console.log('Selection cleared');
+}
+```
+
+</template>
+<template #solid>
+
+```jsx
+const handleChartSelect = (event) => {
+  const { x, y, dataSetIndex, dataIndex } = event.data;
+  console.log(`Selected: x=${x}, y=${y}, dataset=${dataSetIndex}`);
+};
+
+const handleChartDeselect = () => {
+  console.log('Selection cleared');
+};
+```
+
+</template>
+</FrameworkTabs>
 
 ## Adding Multiple Data Sets
 
@@ -176,6 +334,9 @@ const comparisonData: LineChartData = {
 
 ## Programmatic Control
 
+<FrameworkTabs>
+<template #angular>
+
 Use ViewChild to access the chart instance:
 
 ```typescript
@@ -205,13 +366,107 @@ clearHighlights(): void {
   const chart = this.chartRef.nativeElement as LineChart;
   chart.clearHighlights();
 }
-
-// Reset zoom and pan
-resetView(): void {
-  const chart = this.chartRef.nativeElement as LineChart;
-  chart.fitScreen();
-}
 ```
+
+</template>
+<template #react>
+
+Use a ref to access the chart instance:
+
+```tsx
+import { useRef } from "react";
+import type { LineChart } from "@nstudio/ncharts";
+
+const lineChartRef = useRef<LineChart | null>(null);
+
+// Animate the chart
+const animateChart = () => {
+  if (lineChartRef.current) {
+    lineChartRef.current.animate({ 
+      durationX: 1000, 
+      durationY: 1000, 
+      easingX: 'EaseOutBack' 
+    });
+  }
+};
+
+// In JSX:
+<lineChart ref={lineChartRef} data={chartData} />
+```
+
+</template>
+<template #vue>
+
+Use template ref to access the chart:
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue';
+import type { LineChart } from '@nstudio/ncharts';
+
+const chartRef = ref<LineChart | null>(null);
+
+function animateChart() {
+  chartRef.value?.animate({ 
+    durationX: 1000, 
+    durationY: 1000, 
+    easingX: 'EaseOutBack' 
+  });
+}
+</script>
+
+<template>
+  <LineChart ref="chartRef" :data="chartData" />
+</template>
+```
+
+</template>
+<template #svelte>
+
+Bind to the chart element:
+
+```svelte
+<script lang="ts">
+  import type { LineChart } from '@nstudio/ncharts';
+
+  let chartRef: LineChart;
+
+  function animateChart() {
+    chartRef?.animate({ 
+      durationX: 1000, 
+      durationY: 1000, 
+      easingX: 'EaseOutBack' 
+    });
+  }
+</script>
+
+<lineChart bind:this={chartRef} data={chartData} />
+```
+
+</template>
+<template #solid>
+
+Use a ref variable:
+
+```jsx
+import { createSignal } from 'solid-js';
+
+let chartRef;
+
+const animateChart = () => {
+  chartRef?.animate({ 
+    durationX: 1000, 
+    durationY: 1000, 
+    easingX: 'EaseOutBack' 
+  });
+};
+
+// In JSX:
+<lineChart ref={chartRef} data={chartData()} />
+```
+
+</template>
+</FrameworkTabs>
 
 ## Next Steps
 

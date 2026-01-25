@@ -4,6 +4,9 @@ Pie charts are perfect for showing proportions and part-to-whole relationships. 
 
 ## Basic Usage
 
+<FrameworkTabs>
+<template #angular>
+
 ```html
 <PieChart
   [data]="pieData"
@@ -16,6 +19,73 @@ Pie charts are perfect for showing proportions and part-to-whole relationships. 
   [usePercentValues]="true">
 </PieChart>
 ```
+
+</template>
+<template #react>
+
+```tsx
+<pieChart
+  data={pieData}
+  legend={legendConfig}
+  animation={animationConfig}
+  drawHole={true}
+  holeRadius={45}
+  drawCenterText={true}
+  centerText="Total"
+  usePercentValues={true}
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<PieChart
+  :data="pieData"
+  :legend="legendConfig"
+  :animation="animationConfig"
+  :drawHole="true"
+  :holeRadius="45"
+  :drawCenterText="true"
+  centerText="Total"
+  :usePercentValues="true"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<pieChart
+  data={pieData}
+  legend={legendConfig}
+  animation={animationConfig}
+  drawHole={true}
+  holeRadius={45}
+  drawCenterText={true}
+  centerText="Total"
+  usePercentValues={true}
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<pieChart
+  data={pieData()}
+  legend={legendConfig}
+  animation={animationConfig}
+  drawHole={true}
+  holeRadius={45}
+  drawCenterText={true}
+  centerText="Total"
+  usePercentValues={true}
+/>
+```
+
+</template>
+</FrameworkTabs>
 
 ## Data Format
 
@@ -181,7 +251,10 @@ const legend: LegendConfig = {
 };
 ```
 
-## Template (Angular)
+## Template
+
+<FrameworkTabs>
+<template #angular>
 
 ### Standard Pie Chart
 
@@ -223,7 +296,245 @@ const legend: LegendConfig = {
 </PieChart>
 ```
 
+</template>
+<template #react>
+
+```tsx
+import * as React from "react";
+import { useState, useRef } from "react";
+import type { PieChartData, ChartAnimation, LegendConfig, PieChart } from "@nstudio/ncharts";
+
+export const PieChartDemo = () => {
+  const pieChartRef = useRef<PieChart | null>(null);
+  const [isDonut, setIsDonut] = useState(true);
+  const [selectedData, setSelectedData] = useState(null);
+
+  const marketData: PieChartData = {
+    dataSets: [
+      {
+        label: 'Market Share',
+        values: [
+          { value: 35, label: 'Product A' },
+          { value: 25, label: 'Product B' },
+          { value: 20, label: 'Product C' },
+          { value: 12, label: 'Product D' },
+          { value: 8, label: 'Others' },
+        ],
+        config: {
+          colors: ['#F59E0B', '#EF4444', '#8B5CF6', '#3B82F6', '#6B7280'],
+          sliceSpace: 3,
+          selectionShift: 8,
+          drawValues: true,
+          valueTextSize: 12,
+          valueTextColor: '#FFFFFF',
+        },
+      },
+    ],
+  };
+
+  return (
+    <pieChart
+      ref={pieChartRef}
+      data={marketData}
+      animation={{ durationX: 1400, durationY: 1400, easingX: 'EaseOutBounce' }}
+      legend={{ enabled: true, horizontalAlignment: 'CENTER', verticalAlignment: 'BOTTOM' }}
+      drawHole={isDonut}
+      holeRadius={45}
+      drawCenterText={isDonut}
+      centerText="Total"
+      usePercentValues={true}
+      rotationEnabled={true}
+      highlightPerTapEnabled={true}
+      onSelect={(event) => setSelectedData(event.data)}
+      onDeselect={() => setSelectedData(null)}
+      className="h-80 w-full"
+    />
+  );
+};
+```
+
+</template>
+<template #vue>
+
+```vue
+<script lang="ts" setup>
+import { ref, computed } from 'vue';
+import type { PieChartData, ChartSelectEvent } from '@nstudio/ncharts';
+
+const selectedValue = ref('');
+const isDonut = ref(false);
+
+const chartData: PieChartData = {
+  dataSets: [
+    {
+      label: 'Sales by Product',
+      values: [
+        { value: 35, label: 'Product A' },
+        { value: 25, label: 'Product B' },
+        { value: 20, label: 'Product C' },
+        { value: 12, label: 'Product D' },
+        { value: 8, label: 'Other' },
+      ],
+      config: {
+        colors: ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'],
+        sliceSpace: 2,
+        selectionShift: 8,
+        drawValues: true,
+        valueTextSize: 12,
+        valueTextColor: '#FFFFFF',
+      },
+    },
+  ],
+};
+
+function handleValueSelected(event: ChartSelectEvent) {
+  if (event.data) {
+    selectedValue.value = `Value: ${event.data.y?.toFixed(0)}%`;
+  }
+}
+</script>
+
+<template>
+  <PieChart
+    :data="chartData"
+    :animation="{ durationX: 1400, durationY: 1400, easingX: 'EaseOutBounce' }"
+    :legend="{ enabled: true }"
+    :drawHole="isDonut"
+    :holeRadius="50"
+    :drawCenterText="isDonut"
+    centerText="Total"
+    :usePercentValues="true"
+    :rotationEnabled="true"
+    :highlightPerTapEnabled="true"
+    @select="handleValueSelected"
+    class="h-80 w-full"
+  />
+</template>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<script lang="ts">
+  import type { PieChartData, ChartSelectData } from '@nstudio/ncharts';
+
+  let selectedData: ChartSelectData | null = null;
+  let isDonut = true;
+
+  const marketData: PieChartData = {
+    dataSets: [
+      {
+        label: 'Market Share',
+        values: [
+          { value: 35, label: 'Product A' },
+          { value: 25, label: 'Product B' },
+          { value: 20, label: 'Product C' },
+          { value: 12, label: 'Product D' },
+          { value: 8, label: 'Others' },
+        ],
+        config: {
+          colors: ['#F59E0B', '#EF4444', '#8B5CF6', '#3B82F6', '#6B7280'],
+          sliceSpace: 3,
+          selectionShift: 8,
+          drawValues: true,
+          valueTextSize: 12,
+          valueTextColor: '#FFFFFF',
+        },
+      },
+    ],
+  };
+
+  const legendConfig = { enabled: true, horizontalAlignment: 'CENTER', verticalAlignment: 'BOTTOM' };
+  const animationConfig = { durationX: 1400, durationY: 1400, easingX: 'EaseOutBounce' };
+
+  function handleSelect(event: CustomEvent) {
+    selectedData = event.detail.data;
+  }
+</script>
+
+<pieChart
+  data={marketData}
+  animation={animationConfig}
+  legend={legendConfig}
+  drawHole={isDonut}
+  holeRadius={45}
+  drawCenterText={isDonut}
+  centerText="Total"
+  usePercentValues={true}
+  rotationEnabled={true}
+  highlightPerTapEnabled={true}
+  on:select={handleSelect}
+  on:deselect={() => selectedData = null}
+  class="h-80 w-full"
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+import { createSignal } from 'solid-js';
+
+export const PieChartDemo = () => {
+  let pieChartRef;
+  const [isDonut, setIsDonut] = createSignal(true);
+  const [selectedData, setSelectedData] = createSignal(null);
+
+  const marketData = () => ({
+    dataSets: [
+      {
+        label: 'Market Share',
+        values: [
+          { value: 35, label: 'Product A' },
+          { value: 25, label: 'Product B' },
+          { value: 20, label: 'Product C' },
+          { value: 12, label: 'Product D' },
+          { value: 8, label: 'Others' },
+        ],
+        config: {
+          colors: ['#F59E0B', '#EF4444', '#8B5CF6', '#3B82F6', '#6B7280'],
+          sliceSpace: 3,
+          selectionShift: 8,
+          drawValues: true,
+          valueTextSize: 12,
+          valueTextColor: '#FFFFFF',
+        },
+      },
+    ],
+  });
+
+  const legendConfig = { enabled: true, horizontalAlignment: 'CENTER', verticalAlignment: 'BOTTOM' };
+  const animationConfig = { durationX: 1400, durationY: 1400, easingX: 'EaseOutBounce' };
+
+  return (
+    <pieChart
+      ref={pieChartRef}
+      data={marketData()}
+      animation={animationConfig}
+      legend={legendConfig}
+      drawHole={isDonut()}
+      holeRadius={45}
+      drawCenterText={isDonut()}
+      centerText="Total"
+      usePercentValues={true}
+      rotationEnabled={true}
+      highlightPerTapEnabled={true}
+      onSelect={(event) => setSelectedData(event.data)}
+      onDeselect={() => setSelectedData(null)}
+      class="h-80 w-full"
+    />
+  );
+};
+```
+
+</template>
+</FrameworkTabs>
+
 ### Half Pie (Semi-circle)
+
+<FrameworkTabs>
+<template #angular>
 
 ```html
 <PieChart
@@ -235,6 +546,65 @@ const legend: LegendConfig = {
   class="h-48 w-full">
 </PieChart>
 ```
+
+</template>
+<template #react>
+
+```tsx
+<pieChart
+  data={marketData}
+  maxAngle={180}
+  rotationAngle={180}
+  drawHole={true}
+  holeRadius={40}
+  className="h-48 w-full"
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<PieChart
+  :data="marketData"
+  :maxAngle="180"
+  :rotationAngle="180"
+  :drawHole="true"
+  :holeRadius="40"
+  class="h-48 w-full"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<pieChart
+  data={marketData}
+  maxAngle={180}
+  rotationAngle={180}
+  drawHole={true}
+  holeRadius={40}
+  class="h-48 w-full"
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<pieChart
+  data={marketData()}
+  maxAngle={180}
+  rotationAngle={180}
+  drawHole={true}
+  holeRadius={40}
+  class="h-48 w-full"
+/>
+```
+
+</template>
+</FrameworkTabs>
 
 ## Outside Labels Example
 

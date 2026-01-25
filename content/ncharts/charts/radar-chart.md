@@ -4,6 +4,9 @@ Radar charts (also called spider or web charts) are excellent for comparing mult
 
 ## Basic Usage
 
+<FrameworkTabs>
+<template #angular>
+
 ```html
 <RadarChart
   [data]="radarData"
@@ -14,6 +17,65 @@ Radar charts (also called spider or web charts) are excellent for comparing mult
   [webColor]="'#E5E7EB'">
 </RadarChart>
 ```
+
+</template>
+<template #react>
+
+```tsx
+<radarChart
+  data={radarData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  animation={animationConfig}
+  drawWeb={true}
+  webColor="#E5E7EB"
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<RadarChart
+  :data="radarData"
+  :legend="legendConfig"
+  :xAxis="xAxisConfig"
+  :animation="animationConfig"
+  :drawWeb="true"
+  webColor="#E5E7EB"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<radarChart
+  data={radarData}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  animation={animationConfig}
+  drawWeb={true}
+  webColor="#E5E7EB"
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<radarChart
+  data={radarData()}
+  legend={legendConfig}
+  xAxis={xAxisConfig}
+  animation={animationConfig}
+  drawWeb={true}
+  webColor="#E5E7EB"
+/>
+```
+
+</template>
+</FrameworkTabs>
 
 ## Data Format
 

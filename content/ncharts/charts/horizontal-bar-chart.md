@@ -28,6 +28,9 @@ const chartData: BarChartData = {
 
 ## Template
 
+<FrameworkTabs>
+<template #angular>
+
 ```html
 <HorizontalBarChart
   [data]="chartData"
@@ -38,7 +41,65 @@ const chartData: BarChartData = {
 </HorizontalBarChart>
 ```
 
-## Angular Integration
+</template>
+<template #react>
+
+```tsx
+<horizontalBarChart
+  data={chartData}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  legend={{ enabled: true }}
+  animation={{ durationX: 1000, durationY: 1000, easingX: 'EaseOutQuad' }}
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<HorizontalBarChart
+  :data="chartData"
+  :xAxis="xAxisConfig"
+  :yAxis="yAxisConfig"
+  :legend="{ enabled: true }"
+  :animation="{ durationX: 1000, durationY: 1000, easingX: 'EaseOutQuad' }"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<horizontalBarChart
+  data={chartData}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  legend={{ enabled: true }}
+  animation={{ durationX: 1000, durationY: 1000, easingX: 'EaseOutQuad' }}
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<horizontalBarChart
+  data={chartData()}
+  xAxis={xAxisConfig}
+  yAxis={yAxisConfig}
+  legend={{ enabled: true }}
+  animation={{ durationX: 1000, durationY: 1000, easingX: 'EaseOutQuad' }}
+/>
+```
+
+</template>
+</FrameworkTabs>
+
+## Framework Integration
+
+<FrameworkTabs>
+<template #angular>
 
 ```typescript
 import { HorizontalBarChartDirective } from '@nstudio/ncharts/angular';
@@ -46,9 +107,55 @@ import { HorizontalBarChartDirective } from '@nstudio/ncharts/angular';
 @Component({
   standalone: true,
   imports: [HorizontalBarChartDirective],
-  // ...
+  template: `
+    <HorizontalBarChart [data]="chartData" [animation]="animation" />
+  `,
 })
+export class ChartComponent {}
 ```
+
+</template>
+<template #react>
+
+```tsx
+import { registerElement } from 'react-nativescript';
+import { HorizontalBarChart } from '@nstudio/ncharts';
+
+registerElement('horizontalBarChart', () => HorizontalBarChart);
+```
+
+</template>
+<template #vue>
+
+```typescript
+import { registerElement } from 'nativescript-vue';
+import { HorizontalBarChart } from '@nstudio/ncharts';
+
+registerElement('HorizontalBarChart', () => HorizontalBarChart);
+```
+
+</template>
+<template #svelte>
+
+```typescript
+import { registerNativeViewElement } from 'svelte-native/dom';
+import { HorizontalBarChart } from '@nstudio/ncharts';
+
+registerNativeViewElement('horizontalBarChart', () => HorizontalBarChart);
+```
+
+</template>
+<template #solid>
+
+```jsx
+import { registerElement } from 'dominative';
+import { HorizontalBarChart } from '@nstudio/ncharts';
+
+registerElement('horizontalBarChart', HorizontalBarChart);
+```
+
+</template>
+</FrameworkTabs>
 
 ## Axis Configuration
 
