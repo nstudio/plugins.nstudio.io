@@ -112,7 +112,7 @@ const activeChart = ref('line');
             <div class="space-y-4 text-slate-600 dark:text-slate-300">
               <div class="flex items-start gap-3">
                 <div class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500"></div>
-                <p>Smooth animations with 60fps performance</p>
+                <p>Smooth animations at up to 120fps on ProMotion displays</p>
               </div>
               <div class="flex items-start gap-3">
                 <div class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-500"></div>

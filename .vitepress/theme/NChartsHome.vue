@@ -329,7 +329,7 @@ const data: BarChartData = {
           </div>
           <div class="rounded-2xl border border-slate-200 bg-white/80 p-6 text-center backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/80">
             <div class="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-3xl font-bold text-transparent">
-              60fps
+              120fps
             </div>
             <div class="text-slate-600 dark:text-slate-300">Animation Performance</div>
           </div>

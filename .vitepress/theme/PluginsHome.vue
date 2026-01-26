@@ -12,7 +12,7 @@ const plugins = [
     featured: true,
     stats: {
       chartTypes: '9+',
-      performance: '60fps',
+      performance: '120fps',
       platforms: 'iOS & Android',
     },
   },
