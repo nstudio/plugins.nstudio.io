@@ -101,7 +101,7 @@ registerElement('pieChart', () => PieChart);
 registerElement('scatterChart', () => ScatterChart);
 registerElement('bubbleChart', () => BubbleChart);
 registerElement('radarChart', () => RadarChart);
-registerElement('candletickChart', () => CandleStickChart);
+registerElement('candleStickChart', () => CandleStickChart);
 registerElement('combinedChart', () => CombinedChart);
 registerElement('horizontalBarChart', () => HorizontalBarChart);
 ```
