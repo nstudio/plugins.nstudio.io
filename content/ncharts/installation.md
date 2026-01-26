@@ -92,7 +92,7 @@ import { registerElement } from 'react-nativescript';
 import { 
   LineChart, BarChart, PieChart, 
   ScatterChart, BubbleChart, RadarChart,
-  CandlestickChart, CombinedChart, HorizontalBarChart 
+  CandleStickChart, CombinedChart, HorizontalBarChart 
 } from '@nstudio/ncharts';
 
 registerElement('lineChart', () => LineChart);
@@ -101,7 +101,7 @@ registerElement('pieChart', () => PieChart);
 registerElement('scatterChart', () => ScatterChart);
 registerElement('bubbleChart', () => BubbleChart);
 registerElement('radarChart', () => RadarChart);
-registerElement('candlestickChart', () => CandlestickChart);
+registerElement('candletickChart', () => CandleStickChart);
 registerElement('combinedChart', () => CombinedChart);
 registerElement('horizontalBarChart', () => HorizontalBarChart);
 ```
@@ -135,7 +135,7 @@ import { registerElement } from 'nativescript-vue';
 import { 
   LineChart, BarChart, PieChart, 
   ScatterChart, BubbleChart, RadarChart,
-  CandlestickChart, CombinedChart, HorizontalBarChart 
+  CandleStickChart, CombinedChart, HorizontalBarChart 
 } from '@nstudio/ncharts';
 
 registerElement('LineChart', () => LineChart);
@@ -144,7 +144,7 @@ registerElement('PieChart', () => PieChart);
 registerElement('ScatterChart', () => ScatterChart);
 registerElement('BubbleChart', () => BubbleChart);
 registerElement('RadarChart', () => RadarChart);
-registerElement('CandlestickChart', () => CandlestickChart);
+registerElement('CandleStickChart', () => CandleStickChart);
 registerElement('CombinedChart', () => CombinedChart);
 registerElement('HorizontalBarChart', () => HorizontalBarChart);
 ```
@@ -178,7 +178,7 @@ import { registerNativeViewElement } from 'svelte-native/dom';
 import { 
   LineChart, BarChart, PieChart, 
   ScatterChart, BubbleChart, RadarChart,
-  CandlestickChart, CombinedChart, HorizontalBarChart 
+  CandleStickChart, CombinedChart, HorizontalBarChart 
 } from '@nstudio/ncharts';
 
 registerNativeViewElement('lineChart', () => LineChart);
@@ -187,7 +187,7 @@ registerNativeViewElement('pieChart', () => PieChart);
 registerNativeViewElement('scatterChart', () => ScatterChart);
 registerNativeViewElement('bubbleChart', () => BubbleChart);
 registerNativeViewElement('radarChart', () => RadarChart);
-registerNativeViewElement('candlestickChart', () => CandlestickChart);
+registerNativeViewElement('candleStickChart', () => CandleStickChart);
 registerNativeViewElement('combinedChart', () => CombinedChart);
 registerNativeViewElement('horizontalBarChart', () => HorizontalBarChart);
 ```
@@ -218,7 +218,7 @@ import { registerElement } from 'dominative';
 import { 
   LineChart, BarChart, PieChart, 
   ScatterChart, BubbleChart, RadarChart,
-  CandlestickChart, CombinedChart, HorizontalBarChart 
+  CandleStickChart, CombinedChart, HorizontalBarChart 
 } from '@nstudio/ncharts';
 
 registerElement('lineChart', LineChart);
@@ -227,7 +227,7 @@ registerElement('pieChart', PieChart);
 registerElement('scatterChart', ScatterChart);
 registerElement('bubbleChart', BubbleChart);
 registerElement('radarChart', RadarChart);
-registerElement('candlestickChart', CandlestickChart);
+registerElement('candleStickChart', CandleStickChart);
 registerElement('combinedChart', CombinedChart);
 registerElement('horizontalBarChart', HorizontalBarChart);
 ```

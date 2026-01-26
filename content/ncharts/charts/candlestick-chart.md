@@ -21,7 +21,7 @@ Candlestick charts are essential for financial data visualization, showing OHLC 
 <template #react>
 
 ```tsx
-<candlestickChart
+<candleStickChart
   data={candleData}
   legend={legendConfig}
   xAxis={xAxisConfig}
@@ -34,7 +34,7 @@ Candlestick charts are essential for financial data visualization, showing OHLC 
 <template #vue>
 
 ```vue
-<CandlestickChart
+<CandleStickChart
   :data="candleData"
   :legend="legendConfig"
   :xAxis="xAxisConfig"
@@ -47,7 +47,7 @@ Candlestick charts are essential for financial data visualization, showing OHLC 
 <template #svelte>
 
 ```svelte
-<candlestickChart
+<candleStickChart
   data={candleData}
   legend={legendConfig}
   xAxis={xAxisConfig}
@@ -60,7 +60,7 @@ Candlestick charts are essential for financial data visualization, showing OHLC 
 <template #solid>
 
 ```jsx
-<candlestickChart
+<candleStickChart
   data={candleData()}
   legend={legendConfig}
   xAxis={xAxisConfig}
