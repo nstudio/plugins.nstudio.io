@@ -364,7 +364,7 @@ const otherPlugins = plugins.filter(p => !p.featured);
             <div class="flex flex-col justify-center space-y-6">
               <div class="inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10 px-4 py-2">
                 <!-- <span class="text-2xl">🏆</span> -->
-                <span class="font-medium text-blue-600 dark:text-blue-400">Featured Plugin</span>
+                <span class="font-medium text-blue-600 dark:text-blue-400">Featured</span>
               </div>
 
               <h2 class="text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
