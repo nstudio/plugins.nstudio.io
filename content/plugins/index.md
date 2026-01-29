@@ -6,6 +6,7 @@ A collection of high-quality NativeScript plugins from nStudio. Native performan
 
 - [Camera Plus](/plugins/camera-plus) - Advanced camera with flash, focus, video recording, and gallery access
 - [Checkbox](/plugins/checkbox) - Native checkbox and radio button components
+- [nstreamdown](https://nstreamdown.ai) - Native iOS/Android streaming markdown rendering
 - [CardView](/plugins/cardview) - Material Design CardView component
 - [Carousel](/plugins/carousel) - Smooth carousel with page indicators
 - [Blur](/plugins/blur) - Apply blur effects to any view

@@ -233,6 +233,15 @@ const plugins = [
     featured: false,
   },
   {
+    name: '@nstudio/nstreamdown',
+    title: 'nstreamdown',
+    description: 'Streaming markdown rendering which can also be used standalone.',
+    icon: '📜',
+    gradient: 'from-pink-500 to-rose-500',
+    href: 'https://nstreamdown.ai',
+    featured: false,
+  },
+  {
     name: '@nstudio/nativescript-markdown-view',
     title: 'Markdown View',
     description: 'Native markdown rendering for iOS and Android.',
