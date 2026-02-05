@@ -27,13 +27,35 @@ Start the web authentication flow:
 
 ```typescript
 try {
-  const credentials = await auth0Client.webAuth.start();
+  const credentials = await auth0Client.webAuth.start({
+    scope: 'openid profile email',
+    audience: 'https://your-api.com'
+  });
   console.log('Access Token:', credentials.accessToken);
   console.log('ID Token:', credentials.idToken);
   console.log('Expires In:', credentials.expiresIn);
 } catch (error) {
   console.error('Authentication failed:', error);
 }
+```
+
+#### Advanced Options
+
+You can customize the authentication flow with additional options:
+
+```typescript
+const credentials = await auth0Client.webAuth.start({
+  scope: 'openid profile email',
+  audience: 'https://your-api.com',
+  scheme: 'myapp',
+  redirectUrl: 'myapp://callback',
+  ephemeral: true, // iOS only: Use ephemeral browser session
+  parameters: {
+    // Additional platform-specific parameters
+    login_hint: 'user@example.com',
+    ui_locales: 'es'
+  }
+});
 ```
 
 ### Configuration
@@ -75,9 +97,38 @@ Create a new Auth0 client instance.
 | `clientId` | string | Your Auth0 Client ID |
 | `domain` | string | Your Auth0 domain |
 
-### `auth0Client.webAuth.start()`
+### `auth0Client.webAuth.start(options?)`
 
-Start the web authentication flow. Returns a Promise with credentials:
+Start the web authentication flow. Returns a Promise with credentials.
+
+#### Options
+
+| Option | Type | Platform | Description |
+| --- | --- | --- | --- |
+| `scope` | string | Both | OAuth scopes to request (e.g., 'openid profile email') |
+| `audience` | string | Both | API identifier for which to request access |
+| `scheme` | string | Both | Custom URL scheme for callback |
+| `redirectUrl` | string | Both | Custom redirect URL |
+| `ephemeral` | boolean | iOS | Use ephemeral browser session (doesn't persist cookies/data) |
+| `parameters` | Record<string, string> | Both | Additional authentication parameters |
+
+#### Additional Parameters
+
+The `parameters` option allows you to pass additional authentication parameters:
+
+```typescript
+const credentials = await auth0Client.webAuth.start({
+  parameters: {
+    login_hint: 'user@example.com',  // Pre-fill login email
+    ui_locales: 'es',                // Set UI language
+    prompt: 'login',                 // Force login prompt
+    max_age: '3600',                 // Maximum authentication age
+    connection: 'google-oauth2'      // Specify connection
+  }
+});
+```
+
+#### Credentials Response
 
 ```typescript
 interface Credentials {

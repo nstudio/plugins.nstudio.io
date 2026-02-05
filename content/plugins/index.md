@@ -32,6 +32,10 @@ A collection of high-quality NativeScript plugins from nStudio. Native performan
 - [Dynatrace](/plugins/dynatrace) - Application performance monitoring
 - [Appcues](/plugins/appcues) - In-app experiences and onboarding
 
+## Deep Linking & Attribution
+
+- [Branch.io](/plugins/branch) - Deep linking, mobile attribution, and analytics
+
 ## Customer Support
 
 - [Freshchat](/plugins/freshchat) - In-app messaging and support
