@@ -134,6 +134,15 @@ const plugins = [
     featured: false,
   },
   {
+    name: '@nstudio/nativescript-branch',
+    title: 'Branch.io',
+    description: 'Deep linking, mobile attribution, and analytics.',
+    icon: '🔗',
+    gradient: 'from-green-600 to-teal-600',
+    href: '/plugins/branch',
+    featured: false,
+  },
+  {
     name: '@nstudio/nativescript-auth0',
     title: 'Auth0',
     description: 'Auth0 authentication integration for NativeScript apps.',

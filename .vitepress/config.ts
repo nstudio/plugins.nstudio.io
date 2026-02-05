@@ -100,6 +100,12 @@ export default defineConfig({
           ],
         },
         {
+          text: 'Deep Linking & Attribution',
+          items: [
+            { text: 'Branch.io', link: '/plugins/branch' },
+          ],
+        },
+        {
           text: 'Customer Support',
           items: [
             { text: 'Freshchat', link: '/plugins/freshchat' },
