@@ -215,6 +215,25 @@ const yAxis: YAxisConfigDual = {
 </template>
 </FrameworkTabs>
 
+### Optional: Dark Background Text Colors
+
+When using dark chart backgrounds, set text colors explicitly so labels remain readable:
+
+```typescript
+lineData.dataSets[0].config = {
+  ...lineData.dataSets[0].config,
+  drawValues: true,
+  valueTextColor: '#FFFFFF',
+};
+
+legend.textColor = '#F3F4F6';
+xAxis.textColor = '#D1D5DB';
+yAxis.left = { ...yAxis.left, textColor: '#D1D5DB' };
+
+const chartDescription = { text: '', textColor: '#9CA3AF' };
+const noDataTextColor = '#9CA3AF';
+```
+
 ### 5. Handle Selection Events
 
 <FrameworkTabs>

@@ -72,6 +72,32 @@ Combined charts allow you to overlay multiple chart types in a single view, perf
 </template>
 </FrameworkTabs>
 
+## Dark Background Text Visibility
+
+```typescript
+const combinedData: CombinedChartData = {
+  barData: {
+    dataSets: [
+      {
+        label: 'Revenue',
+        values: [120, 180, 160],
+        config: {
+          drawValues: true,
+          valueTextColor: '#FFFFFF',
+        },
+      },
+    ],
+  },
+};
+
+const legend: LegendConfig = { textColor: '#F3F4F6' };
+const xAxis: XAxisConfig = { textColor: '#D1D5DB' };
+const yAxis: YAxisConfigDual = {
+  left: { textColor: '#D1D5DB' },
+  right: { textColor: '#D1D5DB' },
+};
+```
+
 ## Data Format
 
 ```typescript

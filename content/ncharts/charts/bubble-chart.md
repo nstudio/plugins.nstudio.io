@@ -72,6 +72,30 @@ Bubble charts extend scatter plots by adding a third dimension (size), perfect f
 </template>
 </FrameworkTabs>
 
+## Dark Background Text Visibility
+
+```typescript
+const bubbleData: BubbleChartData = {
+  dataSets: [
+    {
+      label: 'Companies',
+      values: [{ x: 10, y: 25, size: 15 }, { x: 20, y: 35, size: 25 }],
+      config: {
+        drawValues: true,
+        valueTextColor: '#FFFFFF',
+      },
+    },
+  ],
+};
+
+const legend: LegendConfig = { textColor: '#F3F4F6' };
+const xAxis: XAxisConfig = { textColor: '#D1D5DB' };
+const yAxis: YAxisConfigDual = {
+  left: { textColor: '#D1D5DB' },
+  right: { textColor: '#D1D5DB' },
+};
+```
+
 ## Data Format
 
 ```typescript

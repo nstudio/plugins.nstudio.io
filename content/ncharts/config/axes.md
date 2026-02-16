@@ -2,6 +2,8 @@
 
 Configure X and Y axes for precise control over chart labels, grid lines, and value formatting.
 
+Axis text styling (`textColor`, `textSize`) is applied consistently on iOS and Android for all chart types that expose axes.
+
 ## X-Axis Configuration
 
 ```typescript

@@ -2,6 +2,8 @@
 
 Configure the chart legend to help users understand your data series.
 
+Legend text styling (`textColor`, `textSize`) is consistently applied across all chart types on iOS and Android.
+
 ## Basic Configuration
 
 ```typescript

@@ -72,6 +72,30 @@ Line charts are perfect for visualizing trends over time, comparing multiple dat
 </template>
 </FrameworkTabs>
 
+## Dark Background Text Visibility
+
+```typescript
+const lineData: LineChartData = {
+  dataSets: [
+    {
+      label: 'Series',
+      values: [10, 20, 15, 30],
+      config: {
+        drawValues: true,
+        valueTextColor: '#FFFFFF',
+      },
+    },
+  ],
+};
+
+const legend: LegendConfig = { textColor: '#F3F4F6' };
+const xAxis: XAxisConfig = { textColor: '#D1D5DB' };
+const yAxis: YAxisConfigDual = {
+  left: { textColor: '#D1D5DB' },
+  right: { textColor: '#D1D5DB' },
+};
+```
+
 ## Data Format
 
 ```typescript

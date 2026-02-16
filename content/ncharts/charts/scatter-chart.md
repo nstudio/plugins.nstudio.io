@@ -72,6 +72,30 @@ Scatter charts are ideal for visualizing correlations between two variables, ide
 </template>
 </FrameworkTabs>
 
+## Dark Background Text Visibility
+
+```typescript
+const scatterData: ScatterChartData = {
+  dataSets: [
+    {
+      label: 'Group A',
+      values: [{ x: 1, y: 12 }, { x: 2, y: 18 }],
+      config: {
+        drawValues: true,
+        valueTextColor: '#FFFFFF',
+      },
+    },
+  ],
+};
+
+const legend: LegendConfig = { textColor: '#F3F4F6' };
+const xAxis: XAxisConfig = { textColor: '#D1D5DB' };
+const yAxis: YAxisConfigDual = {
+  left: { textColor: '#D1D5DB' },
+  right: { textColor: '#D1D5DB' },
+};
+```
+
 ## Data Format
 
 ```typescript

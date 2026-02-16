@@ -87,6 +87,27 @@ Pie charts are perfect for showing proportions and part-to-whole relationships. 
 </template>
 </FrameworkTabs>
 
+## Dark Background Text Visibility
+
+```typescript
+const pieData: PieChartData = {
+  dataSets: [
+    {
+      label: 'Market Share',
+      values: [35, 25, 20, 12, 8],
+      config: {
+        drawValues: true,
+        valueTextColor: '#FFFFFF',
+      },
+    },
+  ],
+};
+
+const legend: LegendConfig = { textColor: '#F3F4F6' };
+const chartDescription: ChartDescription = { text: '', textColor: '#9CA3AF' };
+const noDataTextColor = '#9CA3AF';
+```
+
 ## Data Format
 
 ```typescript

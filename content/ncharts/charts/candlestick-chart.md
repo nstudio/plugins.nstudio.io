@@ -72,6 +72,30 @@ Candlestick charts are essential for financial data visualization, showing OHLC 
 </template>
 </FrameworkTabs>
 
+## Dark Background Text Visibility
+
+```typescript
+const candleData: CandleChartData = {
+  dataSets: [
+    {
+      label: 'AAPL',
+      values: [{ x: 0, shadowH: 175, shadowL: 168, open: 170, close: 173 }],
+      config: {
+        drawValues: true,
+        valueTextColor: '#FFFFFF',
+      },
+    },
+  ],
+};
+
+const legend: LegendConfig = { textColor: '#F3F4F6' };
+const xAxis: XAxisConfig = { textColor: '#D1D5DB' };
+const yAxis: YAxisConfigDual = {
+  left: { textColor: '#D1D5DB' },
+  right: { textColor: '#D1D5DB' },
+};
+```
+
 ## Data Format
 
 ```typescript

@@ -77,6 +77,28 @@ Radar charts (also called spider or web charts) are excellent for comparing mult
 </template>
 </FrameworkTabs>
 
+## Dark Background Text Visibility
+
+```typescript
+const radarData: RadarChartData = {
+  labels: ['Speed', 'Power', 'Defense'],
+  dataSets: [
+    {
+      label: 'Character A',
+      values: [85, 72, 90],
+      config: {
+        drawValues: true,
+        valueTextColor: '#FFFFFF',
+      },
+    },
+  ],
+};
+
+const legend: LegendConfig = { textColor: '#F3F4F6' };
+const xAxis: XAxisConfig = { textColor: '#D1D5DB' };
+const yAxis: YAxisConfig = { textColor: '#D1D5DB' };
+```
+
 ## Data Format
 
 ```typescript

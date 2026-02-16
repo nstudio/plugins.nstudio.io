@@ -141,6 +141,8 @@ type GradientOrientation =
 
 ## Typography
 
+Text color styling is supported consistently across all chart types on iOS and Android.
+
 ### Axis Labels
 
 ```typescript
@@ -171,6 +173,31 @@ config: {
   valueTextSize: 10,
   valueTextColor: '#374151',
 }
+```
+
+### Shared Text Styling (All Charts)
+
+```typescript
+const legend: LegendConfig = {
+  textColor: '#F3F4F6',
+};
+
+const xAxis: XAxisConfig = {
+  textColor: '#D1D5DB',
+};
+
+const yAxis: YAxisConfigDual = {
+  left: { textColor: '#D1D5DB' },
+  right: { textColor: '#D1D5DB' },
+};
+
+const chartDescription: ChartDescription = {
+  text: '',
+  textColor: '#9CA3AF',
+};
+
+// Also supported on all charts:
+// noDataTextColor: '#9CA3AF'
 ```
 
 ## Dark Theme Example

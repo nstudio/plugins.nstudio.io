@@ -524,6 +524,29 @@ interface ChartDescription {
 }
 ```
 
+## Dark Theme Text Visibility (All Charts)
+
+The following text color properties are applied consistently on both iOS and Android across all chart types:
+
+- Data value labels: `drawValues`, `valueTextColor`, `valueTextSize` (dataset config)
+- Legend labels: `legend.textColor`, `legend.textSize`
+- Axis labels (where axes exist): `xAxis.textColor`, `yAxis.left.textColor`, `yAxis.right.textColor`
+- Description label: `chartDescription.textColor`, `chartDescription.textSize`
+- No-data message: `noDataTextColor`
+
+```typescript
+const darkThemeConfig = {
+  legend: { textColor: '#F3F4F6' },
+  xAxis: { textColor: '#D1D5DB' },
+  yAxis: {
+    left: { textColor: '#D1D5DB' },
+    right: { textColor: '#D1D5DB' },
+  },
+  chartDescription: { text: '', textColor: '#9CA3AF' },
+  noDataTextColor: '#9CA3AF',
+};
+```
+
 ## Gradient Types
 
 ```typescript
