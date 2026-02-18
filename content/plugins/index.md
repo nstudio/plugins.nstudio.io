@@ -14,6 +14,7 @@ A collection of high-quality NativeScript plugins from nStudio. Native performan
 - [Fancy Alert](/plugins/fancyalert) - Beautiful alert dialogs with animations
 - [Filterable Listpicker](/plugins/filterable-listpicker) - Modal listpicker with search filtering
 - [Input Mask](/plugins/input-mask) - Format user input for phone numbers, credit cards, etc.
+- [Menu](/plugins/menu) - Native anchored menus with submenus, palette actions, and selected events
 - [ExoPlayer](/plugins/exoplayer) - Video player using ExoPlayer/AVPlayer
 
 ## Barcode & Scanning

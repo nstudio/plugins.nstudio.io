@@ -26,6 +26,15 @@ const plugins = [
     featured: false,
   },
   {
+    name: '@nstudio/nativescript-menu',
+    title: 'Menu',
+    description: 'Native menu components with full customization.',
+    icon: '☰',
+    gradient: 'from-green-500 to-lime-500',
+    href: '/plugins/menu',
+    featured: false,
+  },
+  {
     name: '@nstudio/nativescript-camera-plus',
     title: 'Camera Plus',
     description: 'Advanced camera with flash, focus, video recording, and gallery access.',
