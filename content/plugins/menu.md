@@ -12,6 +12,8 @@ The plugin supports:
 - Palette-style icon rows
 - Selected event callbacks with the chosen option payload
 
+<iframe style="width: 100%; min-height: 200px; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/m81Dcfp-H9U" title="Native anchored menus for NativeScript" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Installation
 
 ```bash
