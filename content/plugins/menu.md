@@ -33,8 +33,6 @@ npm install @nstudio/nativescript-menu
       src="{{imageIcon}}"
       options="{{addOptions}}"
       selected="{{selectOption}}"
-      class="dark:bg-slate-800/60 bg-slate-200/70 rounded-full w-10 h-10"
-      tintColor="#1e293b"
     />
   </GridLayout>
 </Page>
@@ -68,6 +66,7 @@ registerElement('MenuImage', () => MenuImage);
   [options]="addOptions"
   (selected)="selectOption($event)"
   class="dark:bg-slate-800/60 bg-slate-200/70 rounded-full w-10 h-10"
+  tintColor="#1e293b"
 ></MenuImage>
 ```
 
@@ -163,9 +162,9 @@ Registered at the View level, so they can be used on MenuButton, MenuImage, or o
 
 | Property | Type | Description |
 | --- | --- | --- |
-| options | Array<MenuAction> \| MenuAction | Alias setter that assigns menu |
-| menu | Array<MenuAction> \| MenuAction | Tap-to-open menu configuration |
-| contextMenu | Array<MenuAction> \| MenuAction | Long-press menu configuration |
+| options | Array&lt;MenuAction&gt; \| MenuAction | Alias setter that assigns menu |
+| menu | Array&lt;MenuAction&gt; \| MenuAction | Tap-to-open menu configuration |
+| contextMenu | Array&lt;MenuAction&gt; \| MenuAction | Long-press menu configuration |
 
 ## Classes
 

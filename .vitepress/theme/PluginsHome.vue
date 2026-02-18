@@ -28,7 +28,7 @@ const plugins = [
   {
     name: '@nstudio/nativescript-menu',
     title: 'Menu',
-    description: 'Native menu components with full customization.',
+    description: 'Fully native contextual menus with nested actions, selection states, and haptics.',
     icon: '☰',
     gradient: 'from-green-500 to-lime-500',
     href: '/plugins/menu',
