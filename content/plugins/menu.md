@@ -34,11 +34,14 @@ npm install @nstudio/nativescript-menu
       col="1"
       src="{{imageIcon}}"
       options="{{addOptions}}"
+      androidBackgroundOpacity="0.9"
       selected="{{selectOption}}"
     />
   </GridLayout>
 </Page>
 ```
+
+`androidBackgroundOpacity` is Android-only and accepts values from `0` to `1`.
 
 ```typescript
 import { EventData, Page } from '@nativescript/core';
@@ -167,6 +170,7 @@ Registered at the View level, so they can be used on MenuButton, MenuImage, or o
 | options | Array&lt;MenuAction&gt; \| MenuAction | Alias setter that assigns menu |
 | menu | Array&lt;MenuAction&gt; \| MenuAction | Tap-to-open menu configuration |
 | contextMenu | Array&lt;MenuAction&gt; \| MenuAction | Long-press menu configuration |
+| androidBackgroundOpacity | number | Android-only background opacity for the glass menu (`0..1`) |
 
 ## Classes
 
@@ -190,6 +194,7 @@ Both classes expose an options setter and emit selected events.
 - Supports nested submenu choreography, spring-style open, and animated close
 - Supports palette rows and single-selection state updates
 - Supports icon metadata for symbol, src, and font icon rendering
+- Supports `androidBackgroundOpacity` to tune menu glass opacity (`0..1`, e.g. `0.9`)
 
 ## License
 
