@@ -102,6 +102,9 @@ registerElement('menuimage', MenuImage);
 ```typescript
 import { MenuAction } from '@nstudio/nativescript-menu';
 
+const parseHexFontIcon = (hexCode: string) =>
+  String.fromCharCode(parseInt(hexCode, 16));
+
 const addOptions: MenuAction[] = [
   {
     id: 1,
@@ -134,6 +137,17 @@ const addOptions: MenuAction[] = [
     ],
   },
   {
+    id: 45,
+    name: 'Create Customer',
+    subtitle: 'Create a new customer record',
+    icon: {
+      fontFamily: 'Font Awesome 7 Free-Solid-900.otf',
+      text: parseHexFontIcon('f234'),
+      fontWeight: 900,
+      color: '#212121',
+    },
+  },
+  {
     id: 5,
     name: '',
     childrenStyle: 'palette',
@@ -145,6 +159,35 @@ const addOptions: MenuAction[] = [
   },
 ];
 ```
+
+## Font Icons
+
+Font icons are supported through `MenuAction.icon` using the `FontIcon` object shape.
+
+```typescript
+type FontIcon = {
+  fontFamily: string;
+  text: string;
+  fontWeight?: number;
+  color?: string | Color;
+};
+```
+
+- `fontFamily`: the font filename available in your app `fonts` directory (for example `remixicon.ttf`)
+- `text`: the actual glyph character (commonly produced from a hex code)
+- `fontWeight`: optional numeric weight (for example `900` for Font Awesome solid)
+- `color`: optional icon tint color
+
+Font folder location by NativeScript flavor:
+
+- Angular: `src/app/fonts`
+- React: `src/fonts`
+- Solid: `src/fonts`
+- Svelte: `app/fonts`
+- Vue: `app/fonts`
+- Core (JS/TS): `app/fonts`
+
+If both `iconColor` (on `MenuAction`) and `icon.color` are provided, use `icon.color` for font icons.
 
 ## Events
 
@@ -171,6 +214,13 @@ Registered at the View level, so they can be used on MenuButton, MenuImage, or o
 | menu | Array&lt;MenuAction&gt; \| MenuAction | Tap-to-open menu configuration |
 | contextMenu | Array&lt;MenuAction&gt; \| MenuAction | Long-press menu configuration |
 | androidBackgroundOpacity | number | Android-only background opacity for the glass menu (`0..1`) |
+
+`MenuAction.icon` supports:
+
+- system symbol string (for example `'square.and.pencil'`)
+- `{ systemIcon, color? }`
+- `{ src, color? }`
+- `{ fontFamily, text, fontWeight?, color? }` (font icon)
 
 ## Classes
 
