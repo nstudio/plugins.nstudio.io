@@ -74,6 +74,7 @@ export default defineConfig({
             { text: 'Fluid Segmented Bar', link: '/plugins/fluid-segmented-bar' },
             { text: 'Label Marquee', link: '/plugins/label-marquee' },
             { text: 'Markdown View', link: '/plugins/markdown-view' },
+            { text: 'Rich Paste', link: '/plugins/rich-paste' },
           ],
         },
         {

@@ -304,6 +304,15 @@ const plugins = [
     href: '/plugins/smartlook',
     featured: false,
   },
+  {
+    name: '@nstudio/nativescript-rich-paste',
+    title: 'Rich Paste',
+    description: 'Rich paste and drag-and-drop for text inputs. Handles images, GIFs, files, and text.',
+    icon: '📋',
+    gradient: 'from-rose-500 to-pink-500',
+    href: '/plugins/rich-paste',
+    featured: false,
+  },
 ];
 
 const featuredPlugin = plugins.find(p => p.featured);
