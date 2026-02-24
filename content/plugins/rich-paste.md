@@ -11,6 +11,8 @@ The plugin supports:
 - Drop-in replacements for TextField and TextView
 - Automatic temp file management for pasted binary content
 
+<iframe style="width: 100%; min-height: 200px; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/iA2hLRWoaH8" title="NativeScript Rich Paste" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Installation
 
 ```bash
