@@ -33,6 +33,7 @@ A collection of high-quality NativeScript plugins from nStudio. Native performan
 - [Aptabase](/plugins/aptabase) - Privacy-first analytics
 - [Dynatrace](/plugins/dynatrace) - Application performance monitoring
 - [Appcues](/plugins/appcues) - In-app experiences and onboarding
+- [TikTok](/plugins/tiktok) - TikTok Business SDK App Events tracking
 
 ## Deep Linking & Attribution
 
