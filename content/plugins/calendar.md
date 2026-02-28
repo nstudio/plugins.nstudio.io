@@ -13,40 +13,10 @@ The plugin wraps two best-in-class native libraries:
 npm install @nstudio/nativescript-calendar
 ```
 
-## Usage
+## Register the Component
 
-### NativeScript Core
-
-```xml
-<Page xmlns="http://schemas.nativescript.org/tns.xsd"
-  xmlns:cal="@nstudio/nativescript-calendar"
-  navigatingTo="navigatingTo">
-  <cal:NCalendar
-    id="calendar"
-    displayMode="month"
-    selectionMode="single"
-    orientation="vertical"
-    interMonthSpacing="16"
-    daySelect="{{ onDaySelect }}" />
-</Page>
-```
-
-```typescript
-import { EventData, Page } from '@nativescript/core';
-import { NCalendar, CalendarDayEventData } from '@nstudio/nativescript-calendar';
-
-export function navigatingTo(args: EventData) {
-  const page = args.object as Page;
-  page.bindingContext = {
-    onDaySelect(args: CalendarDayEventData) {
-      const day = args.data.day;
-      console.log(`Selected: ${day.year}-${day.month}-${day.day}`);
-    },
-  };
-}
-```
-
-### Angular
+<FrameworkTabs>
+<template #angular>
 
 ```typescript
 import { registerElement } from '@nativescript/angular';
@@ -54,6 +24,62 @@ import { NCalendar } from '@nstudio/nativescript-calendar';
 
 registerElement('NCalendar', () => NCalendar);
 ```
+
+</template>
+<template #react>
+
+```typescript
+import { registerElement } from 'react-nativescript';
+import { NCalendar } from '@nstudio/nativescript-calendar';
+
+registerElement('nCalendar', () => NCalendar);
+```
+
+</template>
+<template #vue>
+
+```typescript
+import { registerElement } from 'nativescript-vue';
+import { NCalendar } from '@nstudio/nativescript-calendar';
+
+registerElement('NCalendar', () => NCalendar);
+```
+
+</template>
+<template #svelte>
+
+```typescript
+import { registerNativeViewElement } from '@nativescript-community/svelte-native/dom';
+import { NCalendar } from '@nstudio/nativescript-calendar';
+
+registerNativeViewElement('nCalendar', () => NCalendar);
+```
+
+</template>
+<template #solid>
+
+```typescript
+import { registerElement } from 'dominative';
+import { NCalendar } from '@nstudio/nativescript-calendar';
+
+registerElement('nCalendar', NCalendar);
+```
+
+</template>
+</FrameworkTabs>
+
+NativeScript Core does not require registration — use the XML namespace:
+
+```xml
+<Page xmlns:cal="@nstudio/nativescript-calendar">
+  ...
+</Page>
+```
+
+## Basic Usage
+
+<FrameworkTabs>
+<template #angular>
 
 ```html
 <NCalendar
@@ -68,28 +94,105 @@ registerElement('NCalendar', () => NCalendar);
 ```typescript
 import { CalendarDayEventData } from '@nstudio/nativescript-calendar';
 
-onDaySelect(args: CalendarDayEventData) {
-  console.log('Selected:', args.data.day.date);
+export class CalendarComponent {
+  onDaySelect(args: CalendarDayEventData) {
+    const day = args.data.day;
+    console.log(`Selected: ${day.year}-${day.month}-${day.day}`);
+  }
 }
 ```
 
-### Other Flavors
+</template>
+<template #react>
+
+```tsx
+<nCalendar
+  displayMode="month"
+  selectionMode="single"
+  orientation="vertical"
+  interMonthSpacing={16}
+  onDaySelect={handleDaySelect}
+  className="h-full"
+/>
+```
 
 ```typescript
-import { NCalendar } from '@nstudio/nativescript-calendar';
+import { CalendarDayEventData } from '@nstudio/nativescript-calendar';
 
-// Vue
-Vue.registerElement('NCalendar', () => NCalendar);
-
-// React
-registerElement('nCalendar', () => NCalendar);
-
-// Svelte
-registerNativeViewElement('nCalendar', () => NCalendar);
-
-// Solid
-registerElement('nCalendar', NCalendar);
+function handleDaySelect(args: CalendarDayEventData) {
+  const day = args.data.day;
+  console.log(`Selected: ${day.year}-${day.month}-${day.day}`);
+}
 ```
+
+</template>
+<template #vue>
+
+```vue
+<NCalendar
+  displayMode="month"
+  selectionMode="single"
+  orientation="vertical"
+  :interMonthSpacing="16"
+  @daySelect="onDaySelect"
+/>
+```
+
+```typescript
+import { CalendarDayEventData } from '@nstudio/nativescript-calendar';
+
+function onDaySelect(args: CalendarDayEventData) {
+  const day = args.data.day;
+  console.log(`Selected: ${day.year}-${day.month}-${day.day}`);
+}
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<nCalendar
+  displayMode="month"
+  selectionMode="single"
+  orientation="vertical"
+  interMonthSpacing={16}
+  on:daySelect={handleDaySelect}
+/>
+```
+
+```typescript
+import { CalendarDayEventData } from '@nstudio/nativescript-calendar';
+
+function handleDaySelect(args: CalendarDayEventData) {
+  const day = args.data.day;
+  console.log(`Selected: ${day.year}-${day.month}-${day.day}`);
+}
+```
+
+</template>
+<template #solid>
+
+```jsx
+<nCalendar
+  displayMode="month"
+  selectionMode="single"
+  orientation="vertical"
+  interMonthSpacing={16}
+  onDaySelect={handleDaySelect}
+/>
+```
+
+```typescript
+import { CalendarDayEventData } from '@nstudio/nativescript-calendar';
+
+function handleDaySelect(args: CalendarDayEventData) {
+  const day = args.data.day;
+  console.log(`Selected: ${day.year}-${day.month}-${day.day}`);
+}
+```
+
+</template>
+</FrameworkTabs>
 
 ## Display Modes
 
@@ -97,25 +200,127 @@ registerElement('nCalendar', NCalendar);
 
 The standard month view with continuous vertical or horizontal scrolling.
 
-```xml
+<FrameworkTabs>
+<template #angular>
+
+```html
+<NCalendar displayMode="month"></NCalendar>
+```
+
+</template>
+<template #react>
+
+```tsx
+<nCalendar displayMode="month" />
+```
+
+</template>
+<template #vue>
+
+```vue
 <NCalendar displayMode="month" />
 ```
+
+</template>
+<template #svelte>
+
+```svelte
+<nCalendar displayMode="month" />
+```
+
+</template>
+<template #solid>
+
+```jsx
+<nCalendar displayMode="month" />
+```
+
+</template>
+</FrameworkTabs>
 
 ### Week
 
 A single-row week strip. Swipe left or right to navigate between weeks.
 
-```xml
+<FrameworkTabs>
+<template #angular>
+
+```html
+<NCalendar displayMode="week"></NCalendar>
+```
+
+</template>
+<template #react>
+
+```tsx
+<nCalendar displayMode="week" />
+```
+
+</template>
+<template #vue>
+
+```vue
 <NCalendar displayMode="week" />
 ```
+
+</template>
+<template #svelte>
+
+```svelte
+<nCalendar displayMode="week" />
+```
+
+</template>
+<template #solid>
+
+```jsx
+<nCalendar displayMode="week" />
+```
+
+</template>
+</FrameworkTabs>
 
 ### Year
 
 A grid of mini-month calendars. Control the number of columns with `monthColumns`.
 
-```xml
-<NCalendar displayMode="year" monthColumns="3" />
+<FrameworkTabs>
+<template #angular>
+
+```html
+<NCalendar displayMode="year" [monthColumns]="3"></NCalendar>
 ```
+
+</template>
+<template #react>
+
+```tsx
+<nCalendar displayMode="year" monthColumns={3} />
+```
+
+</template>
+<template #vue>
+
+```vue
+<NCalendar displayMode="year" :monthColumns="3" />
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<nCalendar displayMode="year" monthColumns={3} />
+```
+
+</template>
+<template #solid>
+
+```jsx
+<nCalendar displayMode="year" monthColumns={3} />
+```
+
+</template>
+</FrameworkTabs>
 
 ## Selection Modes
 
@@ -123,34 +328,104 @@ A grid of mini-month calendars. Control the number of columns with `monthColumns
 
 Tap to select one date. Tap again to deselect.
 
-```xml
-<NCalendar selectionMode="single" />
-```
-
 ### Range
 
 Tap a start date, then tap an end date. Dates in between are highlighted with a range band.
 
-```xml
-<NCalendar selectionMode="range" />
+<FrameworkTabs>
+<template #angular>
+
+```html
+<NCalendar selectionMode="range" (daySelect)="onRangeSelect($event)"></NCalendar>
 ```
 
 ```typescript
-calendar.on('daySelect', () => {
+onRangeSelect(args: CalendarDayEventData) {
+  const calendar = args.object as NCalendar;
   const range = calendar.selectedDateRange;
   if (range) {
     console.log(`${range.start} to ${range.end}`);
   }
-});
+}
 ```
+
+</template>
+<template #react>
+
+```tsx
+<nCalendar
+  selectionMode="range"
+  onDaySelect={handleRangeSelect}
+/>
+```
+
+```typescript
+function handleRangeSelect(args: CalendarDayEventData) {
+  const calendar = args.object as NCalendar;
+  const range = calendar.selectedDateRange;
+  if (range) {
+    console.log(`${range.start} to ${range.end}`);
+  }
+}
+```
+
+</template>
+<template #vue>
+
+```vue
+<NCalendar selectionMode="range" @daySelect="onRangeSelect" />
+```
+
+```typescript
+function onRangeSelect(args: CalendarDayEventData) {
+  const calendar = args.object as NCalendar;
+  const range = calendar.selectedDateRange;
+  if (range) {
+    console.log(`${range.start} to ${range.end}`);
+  }
+}
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<nCalendar selectionMode="range" on:daySelect={handleRangeSelect} />
+```
+
+```typescript
+function handleRangeSelect(args: CalendarDayEventData) {
+  const calendar = args.object as NCalendar;
+  const range = calendar.selectedDateRange;
+  if (range) {
+    console.log(`${range.start} to ${range.end}`);
+  }
+}
+```
+
+</template>
+<template #solid>
+
+```jsx
+<nCalendar selectionMode="range" onDaySelect={handleRangeSelect} />
+```
+
+```typescript
+function handleRangeSelect(args: CalendarDayEventData) {
+  const calendar = args.object as NCalendar;
+  const range = calendar.selectedDateRange;
+  if (range) {
+    console.log(`${range.start} to ${range.end}`);
+  }
+}
+```
+
+</template>
+</FrameworkTabs>
 
 ### Multiple
 
 Tap to toggle individual dates on or off.
-
-```xml
-<NCalendar selectionMode="multiple" />
-```
 
 ```typescript
 const selected = calendar.getSelectedDates();
@@ -161,27 +436,53 @@ console.log(`${selected.length} dates selected`);
 
 Day taps are disabled. Useful for display-only calendars.
 
-```xml
-<NCalendar selectionMode="none" />
-```
-
 ## Orientation & Paging
 
 ### Vertical Scroll (default)
 
 Months flow top to bottom in a continuous scroll.
 
-```xml
-<NCalendar orientation="vertical" />
-```
-
 ### Horizontal Paged
 
 One month at a time. Swipe left or right to navigate.
 
-```xml
-<NCalendar orientation="horizontal" scrollPaged="true" />
+<FrameworkTabs>
+<template #angular>
+
+```html
+<NCalendar orientation="horizontal" [scrollPaged]="true"></NCalendar>
 ```
+
+</template>
+<template #react>
+
+```tsx
+<nCalendar orientation="horizontal" scrollPaged={true} />
+```
+
+</template>
+<template #vue>
+
+```vue
+<NCalendar orientation="horizontal" :scrollPaged="true" />
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<nCalendar orientation="horizontal" scrollPaged={true} />
+```
+
+</template>
+<template #solid>
+
+```jsx
+<nCalendar orientation="horizontal" scrollPaged={true} />
+```
+
+</template>
+</FrameworkTabs>
 
 ## Events / Markers
 
@@ -195,11 +496,139 @@ const events: CalendarEvent[] = [
   { date: new Date(2026, 2, 3), color: '#2196F3', data: { title: 'Design Review', time: '2:00 PM' } },
   { date: new Date(2026, 2, 7), color: '#4CAF50', data: { title: 'Lunch with Sarah', time: '12:30 PM' } },
 ];
-
-calendar.events = events;
 ```
 
+<FrameworkTabs>
+<template #angular>
+
+```html
+<NCalendar [events]="events" (daySelect)="onEventDaySelect($event)"></NCalendar>
+```
+
+</template>
+<template #react>
+
+```tsx
+<nCalendar events={events} onDaySelect={handleEventDaySelect} />
+```
+
+</template>
+<template #vue>
+
+```vue
+<NCalendar :events="events" @daySelect="onEventDaySelect" />
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<nCalendar events={events} on:daySelect={handleEventDaySelect} />
+```
+
+</template>
+<template #solid>
+
+```jsx
+<nCalendar events={events()} onDaySelect={handleEventDaySelect} />
+```
+
+</template>
+</FrameworkTabs>
+
 Each event produces a small colored dot below the day number. Multiple events on the same day show multiple dots. The `data` field is passed through for your use (e.g. to display event details on tap).
+
+## Custom Styling
+
+All style properties can be set via template attributes or programmatically.
+
+<FrameworkTabs>
+<template #angular>
+
+```html
+<NCalendar
+  dayTextColor="#212121"
+  todayTextColor="#FF6B6B"
+  todayBackgroundColor="#2D2D2D"
+  selectedDayTextColor="#FFFFFF"
+  selectedDayBackgroundColor="#FF6B6B"
+  selectedRangeColor="#FF6B6B40"
+  weekendTextColor="#666666"
+  monthHeaderTextColor="#FF6B6B"
+  dayOfWeekTextColor="#999999">
+</NCalendar>
+```
+
+</template>
+<template #react>
+
+```tsx
+<nCalendar
+  dayTextColor="#212121"
+  todayTextColor="#FF6B6B"
+  todayBackgroundColor="#2D2D2D"
+  selectedDayTextColor="#FFFFFF"
+  selectedDayBackgroundColor="#FF6B6B"
+  selectedRangeColor="#FF6B6B40"
+  weekendTextColor="#666666"
+  monthHeaderTextColor="#FF6B6B"
+  dayOfWeekTextColor="#999999"
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<NCalendar
+  dayTextColor="#212121"
+  todayTextColor="#FF6B6B"
+  todayBackgroundColor="#2D2D2D"
+  selectedDayTextColor="#FFFFFF"
+  selectedDayBackgroundColor="#FF6B6B"
+  selectedRangeColor="#FF6B6B40"
+  weekendTextColor="#666666"
+  monthHeaderTextColor="#FF6B6B"
+  dayOfWeekTextColor="#999999"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<nCalendar
+  dayTextColor="#212121"
+  todayTextColor="#FF6B6B"
+  todayBackgroundColor="#2D2D2D"
+  selectedDayTextColor="#FFFFFF"
+  selectedDayBackgroundColor="#FF6B6B"
+  selectedRangeColor="#FF6B6B40"
+  weekendTextColor="#666666"
+  monthHeaderTextColor="#FF6B6B"
+  dayOfWeekTextColor="#999999"
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<nCalendar
+  dayTextColor="#212121"
+  todayTextColor="#FF6B6B"
+  todayBackgroundColor="#2D2D2D"
+  selectedDayTextColor="#FFFFFF"
+  selectedDayBackgroundColor="#FF6B6B"
+  selectedRangeColor="#FF6B6B40"
+  weekendTextColor="#666666"
+  monthHeaderTextColor="#FF6B6B"
+  dayOfWeekTextColor="#999999"
+/>
+```
+
+</template>
+</FrameworkTabs>
 
 ## Programmatic Control
 
@@ -245,28 +674,6 @@ Force a full rebuild of the calendar when needed:
 
 ```typescript
 calendar.refresh();
-```
-
-## Styling
-
-All style properties can be set via XML attributes or programmatically.
-
-```xml
-<NCalendar
-  dayTextColor="#212121"
-  dayFontSize="16"
-  todayTextColor="#FF6B6B"
-  todayBackgroundColor="#2D2D2D"
-  selectedDayTextColor="#FFFFFF"
-  selectedDayBackgroundColor="#FF6B6B"
-  selectedRangeColor="#FF6B6B40"
-  weekendTextColor="#666666"
-  disabledDayTextColor="#E0E0E0"
-  outDateTextColor="#CCCCCC"
-  monthHeaderTextColor="#FF6B6B"
-  monthHeaderFontSize="20"
-  dayOfWeekTextColor="#999999"
-  dayOfWeekFontSize="14" />
 ```
 
 ## Properties
