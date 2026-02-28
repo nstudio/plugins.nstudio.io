@@ -17,6 +17,15 @@ const plugins = [
     },
   },
   {
+    name: '@nstudio/nativescript-calendar',
+    title: 'Calendar',
+    description: 'Full-featured calendar with month, week, and year views, range selection, and event markers. Uses Airbnb HorizonCalendar (iOS) and kizitonwose Calendar (Android).',
+    icon: '📅',
+    gradient: 'from-rose-500 to-orange-500',
+    href: '/plugins/calendar',
+    featured: false,
+  },
+  {
     name: '@nstudio/nativescript-loading-indicator',
     title: 'Loading Indicator',
     description: 'Native loading indicators with customizable appearance for iOS and Android.',
