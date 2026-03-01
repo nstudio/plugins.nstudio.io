@@ -2,10 +2,13 @@
 
 A full-featured native calendar view for NativeScript with month, week, and year display modes, multiple selection modes, event markers, custom styling, and programmatic control.
 
-The plugin wraps two best-in-class native libraries:
+The plugin celebrates two best-in-class native libraries:
 
 - **iOS**: [HorizonCalendar](https://github.com/airbnb/HorizonCalendar) by Airbnb
 - **Android**: [kizitonwose Calendar](https://github.com/kizitonwose/Calendar)
+  
+<iframe style="width: 100%; min-height: 200px; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/LBkGhH9JVHY" title="
+NativeScript Calendar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Installation
 
