@@ -12,6 +12,8 @@ The plugin supports:
 - iOS 14+ menu and primary action support on items
 - Android no-op placeholder so apps can install cross-platform without runtime errors
 
+<iframe style="width: 100%; min-height: 200px; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/iU2bGHrq2MQ" title="Native Toolbar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Installation
 
 ```bash
