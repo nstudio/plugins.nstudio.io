@@ -16,6 +16,7 @@ A collection of high-quality NativeScript plugins from nStudio. Native performan
 - [Filterable Listpicker](/plugins/filterable-listpicker) - Modal listpicker with search filtering
 - [Input Mask](/plugins/input-mask) - Format user input for phone numbers, credit cards, etc.
 - [Menu](/plugins/menu) - Native anchored menus with submenus, palette actions, and selected events
+- [Toolbar](/plugins/toolbar) - Native iOS UIToolbar with UIBarButtonItem and UIToolbarAppearance support
 - [Rich Paste](/plugins/rich-paste) - Rich paste and drag-and-drop for text inputs with images, GIFs, and files
 - [ExoPlayer](/plugins/exoplayer) - Video player using ExoPlayer/AVPlayer
 
