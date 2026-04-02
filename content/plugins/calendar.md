@@ -541,6 +541,99 @@ const events: CalendarEvent[] = [
 
 Each event produces a small colored dot below the day number. Multiple events on the same day show multiple dots. The `data` field is passed through for your use (e.g. to display event details on tap).
 
+## Disabled Dates
+
+Prevent specific dates or entire weekdays from being selected. Disabled days are rendered with `disabledDayTextColor` and cannot be tapped.
+
+### Disable specific dates
+
+```typescript
+// Disable holidays or other specific dates
+calendar.disabledDates = [
+  new Date(2026, 0, 1),   // New Year's Day
+  new Date(2026, 11, 25), // Christmas
+  new Date(2026, 6, 4),   // Independence Day
+];
+```
+
+### Disable weekdays
+
+```typescript
+// Disable weekends (0 = Sunday, 6 = Saturday)
+calendar.disabledWeekdays = [0, 6];
+```
+
+### Combine both
+
+<FrameworkTabs>
+<template #angular>
+
+```html
+<NCalendar
+  [disabledDates]="holidays"
+  [disabledWeekdays]="[0, 6]"
+  disabledDayTextColor="#CCCCCC">
+</NCalendar>
+```
+
+```typescript
+export class BookingComponent {
+  holidays = [
+    new Date(2026, 0, 1),
+    new Date(2026, 11, 25),
+  ];
+}
+```
+
+</template>
+<template #react>
+
+```tsx
+<nCalendar
+  disabledDates={holidays}
+  disabledWeekdays={[0, 6]}
+  disabledDayTextColor="#CCCCCC"
+/>
+```
+
+</template>
+<template #vue>
+
+```vue
+<NCalendar
+  :disabledDates="holidays"
+  :disabledWeekdays="[0, 6]"
+  disabledDayTextColor="#CCCCCC"
+/>
+```
+
+</template>
+<template #svelte>
+
+```svelte
+<nCalendar
+  disabledDates={holidays}
+  disabledWeekdays={[0, 6]}
+  disabledDayTextColor="#CCCCCC"
+/>
+```
+
+</template>
+<template #solid>
+
+```jsx
+<nCalendar
+  disabledDates={holidays()}
+  disabledWeekdays={[0, 6]}
+  disabledDayTextColor="#CCCCCC"
+/>
+```
+
+</template>
+</FrameworkTabs>
+
+Disabled dates are also reported as `isDisabled: true` in the `dayRender` event, allowing further customization.
+
 ## Custom Styling
 
 All style properties can be set via template attributes or programmatically.
@@ -710,6 +803,13 @@ calendar.refresh();
 | Property | Type | Default | Description |
 |---|---|---|---|
 | `events` | `CalendarEvent[]` | `[]` | Dot markers on days |
+
+### Disabled Dates
+
+| Property | Type | Default | Description |
+|---|---|---|---|
+| `disabledDates` | `Date[]` | `[]` | Specific dates that cannot be selected |
+| `disabledWeekdays` | `number[]` | `[]` | Weekdays to disable (0=Sun, 1=Mon...6=Sat) |
 
 ### Spacing
 
