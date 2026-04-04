@@ -64,6 +64,7 @@ export default defineConfig({
             { text: 'CardView', link: '/plugins/cardview' },
             { text: 'Carousel', link: '/plugins/carousel' },
             { text: 'Blur', link: '/plugins/blur' },
+            { text: 'Cloudinary', link: '/plugins/cloudinary' },
             { text: 'Variable Blur View', link: '/plugins/variable-blur-view' },
             { text: 'Loading Indicator', link: '/plugins/loading-indicator' },
             { text: 'Shimmer', link: '/plugins/shimmer' },

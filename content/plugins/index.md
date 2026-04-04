@@ -11,6 +11,7 @@ A collection of high-quality NativeScript plugins from nStudio. Native performan
 - [CardView](/plugins/cardview) - Material Design CardView component
 - [Carousel](/plugins/carousel) - Smooth carousel with page indicators
 - [Blur](/plugins/blur) - Apply blur effects to any view
+- [Cloudinary](/plugins/cloudinary) - Cloudinary-hosted images with native URL generation and transformation APIs
 - [Loading Indicator](/plugins/loading-indicator) - Native loading indicators
 - [Fancy Alert](/plugins/fancyalert) - Beautiful alert dialogs with animations
 - [Filterable Listpicker](/plugins/filterable-listpicker) - Modal listpicker with search filtering

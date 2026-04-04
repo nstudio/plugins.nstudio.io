@@ -107,6 +107,15 @@ const plugins = [
     featured: false,
   },
   {
+    name: '@nstudio/nativescript-cloudinary',
+    title: 'Cloudinary',
+    description: 'Cloudinary-hosted images with native URL generation and transformation APIs.',
+    icon: '☁️',
+    gradient: 'from-sky-500 to-teal-500',
+    href: '/plugins/cloudinary',
+    featured: false,
+  },
+  {
     name: '@nstudio/nativescript-exoplayer',
     title: 'ExoPlayer',
     description: 'Video player using ExoPlayer on Android and AVPlayer on iOS.',
