@@ -69,7 +69,10 @@ class DemoModel {
 }
 ```
 
-### Angular
+### Frameworks
+
+<FrameworkTabs>
+<template #angular>
 
 ```typescript
 import { registerElement } from '@nativescript/angular';
@@ -95,27 +98,52 @@ registerElement('TextViewRichPaste', () => TextViewRichPaste);
 ></TextViewRichPaste>
 ```
 
-### Other Flavors
+</template>
+<template #react>
 
 ```typescript
+import { registerElement } from 'react-nativescript';
 import { TextFieldRichPaste, TextViewRichPaste } from '@nstudio/nativescript-rich-paste';
 
-// Vue
-registerElement('TextFieldRichPaste', () => TextFieldRichPaste);
-registerElement('TextViewRichPaste', () => TextViewRichPaste);
-
-// React
 registerElement('textFieldRichPaste', () => TextFieldRichPaste);
 registerElement('textViewRichPaste', () => TextViewRichPaste);
+```
 
-// Svelte
+</template>
+<template #vue>
+
+```typescript
+import { registerElement } from 'nativescript-vue';
+import { TextFieldRichPaste, TextViewRichPaste } from '@nstudio/nativescript-rich-paste';
+
+registerElement('TextFieldRichPaste', () => TextFieldRichPaste);
+registerElement('TextViewRichPaste', () => TextViewRichPaste);
+```
+
+</template>
+<template #svelte>
+
+```typescript
+import { registerNativeViewElement } from '@nativescript-community/svelte-native/dom';
+import { TextFieldRichPaste, TextViewRichPaste } from '@nstudio/nativescript-rich-paste';
+
 registerNativeViewElement('textFieldRichPaste', () => TextFieldRichPaste);
 registerNativeViewElement('textViewRichPaste', () => TextViewRichPaste);
+```
 
-// Solid
+</template>
+<template #solid>
+
+```typescript
+import { registerElement } from 'dominative';
+import { TextFieldRichPaste, TextViewRichPaste } from '@nstudio/nativescript-rich-paste';
+
 registerElement('textFieldRichPaste', TextFieldRichPaste);
 registerElement('textViewRichPaste', TextViewRichPaste);
 ```
+
+</template>
+</FrameworkTabs>
 
 ## Paste Payload
 

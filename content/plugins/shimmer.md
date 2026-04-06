@@ -25,7 +25,10 @@ npm install @nstudio/nativescript-shimmer
 </Page>
 ```
 
-### Angular
+### Frameworks
+
+<FrameworkTabs>
+<template #angular>
 
 ```typescript
 import { registerElement } from '@nativescript/angular';
@@ -42,23 +45,48 @@ registerElement('Shimmer', () => Shimmer);
 </Shimmer>
 ```
 
-### Other Flavors
+</template>
+<template #react>
 
 ```typescript
+import { registerElement } from 'react-nativescript';
 import { Shimmer } from '@nstudio/nativescript-shimmer';
 
-// Vue
-Vue.registerElement('Shimmer', () => Shimmer);
-
-// React
 registerElement('shimmer', () => Shimmer);
+```
 
-// Svelte
+</template>
+<template #vue>
+
+```typescript
+import { registerElement } from 'nativescript-vue';
+import { Shimmer } from '@nstudio/nativescript-shimmer';
+
+registerElement('Shimmer', () => Shimmer);
+```
+
+</template>
+<template #svelte>
+
+```typescript
+import { registerNativeViewElement } from '@nativescript-community/svelte-native/dom';
+import { Shimmer } from '@nstudio/nativescript-shimmer';
+
 registerNativeViewElement('shimmer', () => Shimmer);
+```
 
-// Solid
+</template>
+<template #solid>
+
+```typescript
+import { registerElement } from 'dominative';
+import { Shimmer } from '@nstudio/nativescript-shimmer';
+
 registerElement('shimmer', Shimmer);
 ```
+
+</template>
+</FrameworkTabs>
 
 ## Properties
 

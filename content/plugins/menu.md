@@ -55,7 +55,10 @@ export function navigatingTo(args: EventData) {
 class DemoModel extends DemoSharedNativescriptMenu {}
 ```
 
-### Angular
+### Frameworks
+
+<FrameworkTabs>
+<template #angular>
 
 ```typescript
 import { registerElement } from '@nativescript/angular';
@@ -75,27 +78,52 @@ registerElement('MenuImage', () => MenuImage);
 ></MenuImage>
 ```
 
-### Other Flavors
+</template>
+<template #react>
 
 ```typescript
+import { registerElement } from 'react-nativescript';
 import { MenuButton, MenuImage } from '@nstudio/nativescript-menu';
 
-// Vue
-Vue.registerElement('MenuButton', () => MenuButton);
-Vue.registerElement('MenuImage', () => MenuImage);
-
-// React
 registerElement('menubutton', () => MenuButton);
 registerElement('menuimage', () => MenuImage);
+```
 
-// Svelte
+</template>
+<template #vue>
+
+```typescript
+import { registerElement } from 'nativescript-vue';
+import { MenuButton, MenuImage } from '@nstudio/nativescript-menu';
+
+registerElement('MenuButton', () => MenuButton);
+registerElement('MenuImage', () => MenuImage);
+```
+
+</template>
+<template #svelte>
+
+```typescript
+import { registerNativeViewElement } from '@nativescript-community/svelte-native/dom';
+import { MenuButton, MenuImage } from '@nstudio/nativescript-menu';
+
 registerNativeViewElement('menubutton', () => MenuButton);
 registerNativeViewElement('menuimage', () => MenuImage);
+```
 
-// Solid
+</template>
+<template #solid>
+
+```typescript
+import { registerElement } from 'dominative';
+import { MenuButton, MenuImage } from '@nstudio/nativescript-menu';
+
 registerElement('menubutton', MenuButton);
 registerElement('menuimage', MenuImage);
 ```
+
+</template>
+</FrameworkTabs>
 
 ## Menu Model
 

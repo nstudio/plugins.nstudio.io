@@ -34,12 +34,13 @@ init('your_cloud_name', 'your_api_key', 'your_api_secret');
 
 ## Usage
 
-### NativeScript Core
+### Core
 
 ```xml
-<Page xmlns="http://schemas.nativescript.org/tns.xsd"
-      xmlns:cl="@nstudio/nativescript-cloudinary"
-      navigatingTo="navigatingTo">
+<Page
+  xmlns="http://schemas.nativescript.org/tns.xsd"
+  xmlns:cl="@nstudio/nativescript-cloudinary"
+  navigatingTo="navigatingTo">
   <GridLayout class="p-24">
     <cl:ImageCloudinary
       stretch="aspectFill"
@@ -50,26 +51,71 @@ init('your_cloud_name', 'your_api_key', 'your_api_secret');
 ```
 
 ```typescript
-import { EventData, Page } from '@nativescript/core';
-import { ImageCloudinaryOptions } from '@nstudio/nativescript-cloudinary';
-
-export function navigatingTo(args: EventData) {
-  const page = args.object as Page;
-  page.bindingContext = new DemoModel();
-}
-
-class DemoModel {
-  heroImage: ImageCloudinaryOptions = {
-    src: 'cld-sample',
-    width: 900,
-    height: 900,
-    crop: 'fill',
-    gravity: 'face',
-    format: 'auto',
-    quality: 'auto',
-  };
-}
+const heroImage: ImageCloudinaryOptions = {
+  src: 'cld-sample',
+  width: 900,
+  height: 900,
+  crop: 'fill',
+  gravity: 'face',
+  format: 'auto',
+  quality: 'auto',
+};
 ```
+
+## Framework Registration
+
+<FrameworkTabs>
+<template #angular>
+
+```typescript
+import { registerElement } from '@nativescript/angular';
+import { ImageCloudinary } from '@nstudio/nativescript-cloudinary';
+
+registerElement('ImageCloudinary', () => ImageCloudinary);
+```
+
+</template>
+<template #react>
+
+```typescript
+import { registerElement } from 'react-nativescript';
+import { ImageCloudinary } from '@nstudio/nativescript-cloudinary';
+
+registerElement('imageCloudinary', () => ImageCloudinary);
+```
+
+</template>
+<template #vue>
+
+```typescript
+import { registerElement } from 'nativescript-vue';
+import { ImageCloudinary } from '@nstudio/nativescript-cloudinary';
+
+registerElement('ImageCloudinary', () => ImageCloudinary);
+```
+
+</template>
+<template #svelte>
+
+```typescript
+import { registerNativeViewElement } from '@nativescript-community/svelte-native/dom';
+import { ImageCloudinary } from '@nstudio/nativescript-cloudinary';
+
+registerNativeViewElement('imageCloudinary', () => ImageCloudinary);
+```
+
+</template>
+<template #solid>
+
+```typescript
+import { registerElement } from 'dominative';
+import { ImageCloudinary } from '@nstudio/nativescript-cloudinary';
+
+registerElement('imageCloudinary', ImageCloudinary);
+```
+
+</template>
+</FrameworkTabs>
 
 ### Transformation Modes
 
@@ -111,35 +157,6 @@ const options: ImageCloudinaryOptions = {
 ```
 
 Priority order: `rawTransformation` > `transformations` > top-level shorthand properties.
-
-## Framework Registration
-
-### Angular
-
-```typescript
-import { registerElement } from '@nativescript/angular';
-import { ImageCloudinary } from '@nstudio/nativescript-cloudinary';
-
-registerElement('ImageCloudinary', () => ImageCloudinary);
-```
-
-### Other Flavors
-
-```typescript
-import { ImageCloudinary } from '@nstudio/nativescript-cloudinary';
-
-// React
-registerElement('imageCloudinary', () => ImageCloudinary);
-
-// Solid
-registerElement('imageCloudinary', ImageCloudinary);
-
-// Svelte
-registerNativeViewElement('imageCloudinary', () => ImageCloudinary);
-
-// Vue
-registerElement('ImageCloudinary', () => ImageCloudinary);
-```
 
 ## Programmatic URL Generation
 

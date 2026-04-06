@@ -25,7 +25,10 @@ npm install @nstudio/nativescript-label-marquee
 </Page>
 ```
 
-### Angular
+### Frameworks
+
+<FrameworkTabs>
+<template #angular>
 
 ```typescript
 import { registerElement } from '@nativescript/angular';
@@ -42,23 +45,48 @@ registerElement('LabelMarquee', () => LabelMarquee);
 </LabelMarquee>
 ```
 
-### Other Flavors
+</template>
+<template #react>
 
 ```typescript
+import { registerElement } from 'react-nativescript';
 import { LabelMarquee } from '@nstudio/nativescript-label-marquee';
 
-// Vue
-Vue.registerElement('LabelMarquee', () => LabelMarquee);
-
-// React
 registerElement('labelMarquee', () => LabelMarquee);
+```
 
-// Svelte
+</template>
+<template #vue>
+
+```typescript
+import { registerElement } from 'nativescript-vue';
+import { LabelMarquee } from '@nstudio/nativescript-label-marquee';
+
+registerElement('LabelMarquee', () => LabelMarquee);
+```
+
+</template>
+<template #svelte>
+
+```typescript
+import { registerNativeViewElement } from '@nativescript-community/svelte-native/dom';
+import { LabelMarquee } from '@nstudio/nativescript-label-marquee';
+
 registerNativeViewElement('labelMarquee', () => LabelMarquee);
+```
 
-// Solid
+</template>
+<template #solid>
+
+```typescript
+import { registerElement } from 'dominative';
+import { LabelMarquee } from '@nstudio/nativescript-label-marquee';
+
 registerElement('labelMarquee', LabelMarquee);
 ```
+
+</template>
+</FrameworkTabs>
 
 ## Properties
 

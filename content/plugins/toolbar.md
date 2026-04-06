@@ -60,7 +60,10 @@ export function navigatingTo(args: EventData) {
 }
 ```
 
-### Angular
+### Frameworks
+
+<FrameworkTabs>
+<template #angular>
 
 ```typescript
 import { registerElement } from '@nativescript/angular';
@@ -113,23 +116,48 @@ export class DemoToolbarComponent {
 }
 ```
 
-### Other Flavors
+</template>
+<template #react>
 
 ```typescript
+import { registerElement } from 'react-nativescript';
 import { NToolbar } from '@nstudio/nativescript-toolbar';
 
-// Vue
-registerElement('NToolbar', () => NToolbar);
-
-// React
 registerElement('nToolbar', () => NToolbar);
+```
 
-// Svelte
+</template>
+<template #vue>
+
+```typescript
+import { registerElement } from 'nativescript-vue';
+import { NToolbar } from '@nstudio/nativescript-toolbar';
+
+registerElement('NToolbar', () => NToolbar);
+```
+
+</template>
+<template #svelte>
+
+```typescript
+import { registerNativeViewElement } from '@nativescript-community/svelte-native/dom';
+import { NToolbar } from '@nstudio/nativescript-toolbar';
+
 registerNativeViewElement('nToolbar', () => NToolbar);
+```
 
-// Solid
+</template>
+<template #solid>
+
+```typescript
+import { registerElement } from 'dominative';
+import { NToolbar } from '@nstudio/nativescript-toolbar';
+
 registerElement('nToolbar', NToolbar);
 ```
+
+</template>
+</FrameworkTabs>
 
 ## API
 

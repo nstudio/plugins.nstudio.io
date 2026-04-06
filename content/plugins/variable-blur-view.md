@@ -20,25 +20,58 @@ The variable blur creates a gradient blur effect that transitions from clear to 
 
 ### Register the Element
 
+<FrameworkTabs>
+<template #angular>
+
 ```typescript
+import { registerElement } from '@nativescript/angular';
 import { VariableBlurView } from '@nstudio/nativescript-variable-blur-view';
 
-// Angular
-import { registerElement } from '@nativescript/angular';
 registerElement('VariableBlurView', () => VariableBlurView);
+```
 
-// Vue
-Vue.registerElement('VariableBlurView', () => VariableBlurView);
+</template>
+<template #react>
 
-// React
+```typescript
+import { registerElement } from 'react-nativescript';
+import { VariableBlurView } from '@nstudio/nativescript-variable-blur-view';
+
 registerElement('variableBlurView', () => VariableBlurView);
+```
 
-// Svelte
+</template>
+<template #vue>
+
+```typescript
+import { registerElement } from 'nativescript-vue';
+import { VariableBlurView } from '@nstudio/nativescript-variable-blur-view';
+
+registerElement('VariableBlurView', () => VariableBlurView);
+```
+
+</template>
+<template #svelte>
+
+```typescript
+import { registerNativeViewElement } from '@nativescript-community/svelte-native/dom';
+import { VariableBlurView } from '@nstudio/nativescript-variable-blur-view';
+
 registerNativeViewElement('variableBlurView', () => VariableBlurView);
+```
 
-// Solid
+</template>
+<template #solid>
+
+```typescript
+import { registerElement } from 'dominative';
+import { VariableBlurView } from '@nstudio/nativescript-variable-blur-view';
+
 registerElement('variableBlurView', VariableBlurView);
 ```
+
+</template>
+</FrameworkTabs>
 
 ### Basic Usage
 

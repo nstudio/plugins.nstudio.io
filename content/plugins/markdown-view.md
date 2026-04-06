@@ -23,7 +23,10 @@ npm install @nstudio/nativescript-markdown-view
 </Page>
 ```
 
-### Angular
+### Frameworks
+
+<FrameworkTabs>
+<template #angular>
 
 ```typescript
 import { registerElement } from '@nativescript/angular';
@@ -36,23 +39,48 @@ registerElement('MarkdownView', () => MarkdownView);
 <MarkdownView markdown="_This_ should be **bold**!"></MarkdownView>
 ```
 
-### Other Flavors
+</template>
+<template #react>
 
 ```typescript
+import { registerElement } from 'react-nativescript';
 import { MarkdownView } from '@nstudio/nativescript-markdown-view';
 
-// Vue
-Vue.registerElement('MarkdownView', () => MarkdownView);
-
-// React
 registerElement('markdownview', () => MarkdownView);
+```
 
-// Svelte
+</template>
+<template #vue>
+
+```typescript
+import { registerElement } from 'nativescript-vue';
+import { MarkdownView } from '@nstudio/nativescript-markdown-view';
+
+registerElement('MarkdownView', () => MarkdownView);
+```
+
+</template>
+<template #svelte>
+
+```typescript
+import { registerNativeViewElement } from '@nativescript-community/svelte-native/dom';
+import { MarkdownView } from '@nstudio/nativescript-markdown-view';
+
 registerNativeViewElement('markdownview', () => MarkdownView);
+```
 
-// Solid
+</template>
+<template #solid>
+
+```typescript
+import { registerElement } from 'dominative';
+import { MarkdownView } from '@nstudio/nativescript-markdown-view';
+
 registerElement('markdownview', MarkdownView);
 ```
+
+</template>
+</FrameworkTabs>
 
 ## Properties
 
