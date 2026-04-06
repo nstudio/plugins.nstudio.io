@@ -59,17 +59,9 @@ export default defineConfig({
         {
           text: 'UI Components',
           items: [
-            { text: 'Blur', link: '/plugins/blur' },
-            { text: 'Camera Plus', link: '/plugins/camera-plus' },
-            { text: 'CardView', link: '/plugins/cardview' },
-            { text: 'Carousel', link: '/plugins/carousel' },
-            { text: 'Checkbox', link: '/plugins/checkbox' },
+            { text: 'Calendar', link: '/plugins/calendar' },
             { text: 'Cloudinary', link: '/plugins/cloudinary' },
             { text: 'ExoPlayer', link: '/plugins/exoplayer' },
-            { text: 'Fancy Alert', link: '/plugins/fancyalert' },
-            { text: 'Filterable Listpicker', link: '/plugins/filterable-listpicker' },
-            { text: 'Fluid Segmented Bar', link: '/plugins/fluid-segmented-bar' },
-            { text: 'Input Mask', link: '/plugins/input-mask' },
             { text: 'Label Marquee', link: '/plugins/label-marquee' },
             { text: 'Loading Indicator', link: '/plugins/loading-indicator' },
             { text: 'Markdown View', link: '/plugins/markdown-view' },

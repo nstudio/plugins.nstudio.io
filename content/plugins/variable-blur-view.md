@@ -119,13 +119,6 @@ To blur from bottom-to-top instead of top-to-bottom:
 </GridLayout>
 ```
 
-## Platform Support
-
-| Platform | Supported |
-| --- | --- |
-| iOS | ✅ |
-| Android | 🚧 Coming soon |
-
 ## License
 
 Apache License Version 2.0
