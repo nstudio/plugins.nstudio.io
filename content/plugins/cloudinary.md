@@ -10,6 +10,8 @@ The plugin supports:
 - Programmatic URL generation via `generateUrl`
 - Compatible with Angular, React, Solid, Svelte, and Vue
 
+<iframe style="width: 100%; min-height: 200px; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/s8QY-f5i7tA" title="Cloudinary for NativeScript" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Installation
 
 ```bash
