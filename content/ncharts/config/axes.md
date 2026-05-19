@@ -136,18 +136,26 @@ gridDashedLine: {
 
 ## Value Formatters
 
-### Built-in Formatters
+`valueFormatter` accepts either a `string[]` (category labels) or one of the named
+formatters described below. The runtime resolves it to a native formatter
+(`ChartIndexAxisValueFormatter` on iOS, `IndexAxisValueFormatter` on Android) and
+applies it to the underlying chart axis.
+
+### Custom Labels Array (recommended)
+
+Map each integer x-value to a category label by index. This is what powers
+horizontal bar charts that show category names on the value axis.
+
+```typescript
+valueFormatter: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+```
+
+### Built-in Named Formatters
 
 ```typescript
 valueFormatter: 'largeValue'  // 1000 → 1K, 1000000 → 1M
 valueFormatter: 'percent'     // 0.5 → 50%
 valueFormatter: 'date'        // Uses valueFormatterPattern
-```
-
-### Custom Labels Array
-
-```typescript
-valueFormatter: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
 ```
 
 ### Date Formatting
@@ -167,6 +175,45 @@ valueFormatterLabels: [
   { x: 10, label: 'End' },
 ],
 ```
+
+### Support Matrix
+
+| Formatter         | iOS                                                 | Android                                       |
+| ----------------- | --------------------------------------------------- | --------------------------------------------- |
+| `string[]`        | ✅ `ChartIndexAxisValueFormatter`                   | ✅ `IndexAxisValueFormatter`                  |
+| `'largeValue'`    | ✅ `ChartDefaultAxisValueFormatter` (block)         | ✅ `LargeValueFormatter` (built-in)           |
+| `'percent'`       | ✅ `NSNumberFormatter` (PercentStyle) via block     | ✅ `PercentFormatter` (built-in)              |
+| `'date'`          | ✅ `NSDateFormatter` w/ `valueFormatterPattern`     | ✅ `SimpleDateFormat` w/ `valueFormatterPattern` |
+| `'labelByXValue'` | ✅ Sparse lookup via `valueFormatterLabels`         | ✅ Sparse lookup via `valueFormatterLabels`   |
+
+If an unrecognized string is passed, the chart silently falls back to the
+platform default (numeric labels). The single entry points are
+`resolveAxisValueFormatterIOS` in
+`packages/ncharts/charts/style-helpers.ios.ts` and
+`resolveAxisValueFormatterAndroid` in
+`packages/ncharts/charts/style-helpers.android.ts` — both are unit-tested in
+their adjacent `*.spec.ts` files.
+
+#### Platform notes
+
+- **`'percent'`** — the value passed to the axis is treated as the *percentage
+  itself* (e.g. `50` → `"50%"`), not a 0–1 fraction. On iOS we divide by 100
+  before handing to `NSNumberFormatter` so both platforms agree.
+- **`'date'`** — iOS interprets the value as **epoch seconds** (`NSDate`
+  convention); Android interprets it as **epoch milliseconds** (`java.util.Date`
+  convention). If you want a single value to format identically on both, scale
+  it accordingly before plotting.
+- **`'labelByXValue'`** — when no entry in `valueFormatterLabels` matches the
+  current axis value, both platforms fall back to the raw numeric value.
+
+### Chart-Type Coverage
+
+The `applyXAxisIOS / applyXAxisAndroid` and `applyYAxisIOS / applyYAxisAndroid`
+helpers apply `valueFormatter` for every chart that goes through the shared axis
+pipeline: `BarChart`, `HorizontalBarChart`, `LineChart`, `ScatterChart`,
+`BubbleChart`, `CandleStickChart`, and `CombinedChart`. `RadarChart` uses a
+chart-data-level path instead (`data.labels` rather than `xAxis.valueFormatter`);
+see [Radar Chart](../charts/radar-chart.md) for the radar-specific API.
 
 ## Limit Lines
 
